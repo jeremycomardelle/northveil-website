@@ -318,11 +318,7 @@ h1, h2, h3, h4 {
   0%, 100% { transform: scale(1); opacity: 0.85; }
   50% { transform: scale(1.08); opacity: 1; }
 }
-.device-svg { position: relative; width: min(360px, 80%); animation: float 5s ease-in-out infinite; }
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(-2deg); }
-  50% { transform: translateY(-18px) rotate(1deg); }
-}
+.device-svg { position: relative; width: min(360px, 80%); }
 .device-badge {
   position: absolute;
   top: 6%;
