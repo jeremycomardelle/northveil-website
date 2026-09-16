@@ -120,31 +120,58 @@
           <text x="60" y="170" fill="#8a8f98" font-family="Inter, sans-serif" font-size="11">Track 7 of 42 &#8226; 3:12</text>
 
           <!-- 3-button row -->
-          <g fill="#161310" stroke="#3a352d" stroke-width="1.5">
-            <rect x="50" y="272" width="78" height="34" rx="10"/>
-            <rect x="141" y="272" width="78" height="34" rx="10"/>
-            <rect x="232" y="272" width="78" height="34" rx="10"/>
+          <g style="cursor:pointer;">
+            <title>Style &mdash; shuffle playback</title>
+            <rect x="50" y="272" width="78" height="34" rx="10" fill="#161310" stroke="#3a352d" stroke-width="1.5"/>
+            <g fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M81 282 98 296"/>
+              <path d="M93 296 99 296 99 290"/>
+              <path d="M81 296 98 282"/>
+              <path d="M93 282 99 282 99 288"/>
+            </g>
           </g>
-          <g fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M97 283 82 289 97 295"/>
-            <path d="M263 283 278 289 263 295"/>
+          <g style="cursor:pointer;">
+            <title>Queue &mdash; up next</title>
+            <rect x="141" y="272" width="78" height="34" rx="10" fill="#161310" stroke="#3a352d" stroke-width="1.5"/>
+            <text x="180" y="295" fill="#ffffff" font-family="Bebas Neue, sans-serif" font-size="18" text-anchor="middle">Q</text>
           </g>
-          <g fill="#ffffff">
-            <rect x="176" y="281" width="4" height="16" rx="1.5"/>
-            <rect x="188" y="281" width="4" height="16" rx="1.5"/>
+          <g style="cursor:pointer;">
+            <title>Remove &mdash; delete from library</title>
+            <rect x="232" y="272" width="78" height="34" rx="10" fill="#161310" stroke="#3a352d" stroke-width="1.5"/>
+            <g fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M263 284h16"/>
+              <path d="M267 284v-2c0-.6.4-1 1-1h4c.6 0 1 .4 1 1v2"/>
+              <path d="M265 284l1 12.5c.1 1 .9 1.5 1.8 1.5h6.4c.9 0 1.7-.5 1.8-1.5l1-12.5"/>
+            </g>
           </g>
 
           <!-- click wheel -->
           <circle cx="180" cy="426" r="100" fill="url(#wheelGrad)" stroke="#3a352d" stroke-width="2"/>
-          <g fill="#c9bfae" font-family="Bebas Neue, sans-serif" font-size="15" letter-spacing="1.5" text-anchor="middle">
-            <text x="180" y="361">MENU</text>
+
+          <g fill="#c9bfae" font-family="Bebas Neue, sans-serif" font-size="14" letter-spacing="1.5" text-anchor="middle" style="cursor:pointer;">
+            <title>Return &mdash; go back</title>
+            <text x="180" y="361">RETURN</text>
           </g>
-          <g fill="none" stroke="#c9bfae" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+          <g fill="none" stroke="#c9bfae" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor:pointer;">
+            <title>Previous track</title>
             <path d="M126 421 114 426 126 431 M116 421 104 426 116 431"/>
+          </g>
+          <g fill="none" stroke="#c9bfae" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor:pointer;">
+            <title>Next track</title>
             <path d="M234 421 246 426 234 431 M244 421 256 426 244 431"/>
           </g>
-          <path d="M174 488 174 504 188 496 Z" fill="#c9bfae"/>
-          <circle cx="180" cy="426" r="36" fill="#0b0a08" stroke="#3a352d" stroke-width="2"/>
+
+          <g style="cursor:pointer;">
+            <title>Home &mdash; main menu</title>
+            <path d="M180 484 190 494 184 494 184 504 176 504 176 494 170 494 Z" fill="#c9bfae"/>
+          </g>
+
+          <g style="cursor:pointer;">
+            <title>Play / Pause</title>
+            <circle cx="180" cy="426" r="36" fill="#0b0a08" stroke="#3a352d" stroke-width="2"/>
+            <path d="M172 413 172 439 195 426 Z" fill="#ffffff"/>
+          </g>
         </svg>
       </div>
     </div>
