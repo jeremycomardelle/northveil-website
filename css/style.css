@@ -319,20 +319,6 @@ h1, h2, h3, h4 {
   50% { transform: scale(1.08); opacity: 1; }
 }
 .device-svg { position: relative; width: min(360px, 80%); }
-.device-badge {
-  position: absolute;
-  top: 6%;
-  right: -6%;
-  background: var(--accent);
-  color: var(--black);
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  letter-spacing: 0.06em;
-  padding: 8px 16px;
-  border-radius: 999px;
-  transform: rotate(8deg);
-  box-shadow: 0 10px 20px -6px var(--accent-glow);
-}
 
 /* ---------- section shell ---------- */
 section { position: relative; padding: 120px 0; }
