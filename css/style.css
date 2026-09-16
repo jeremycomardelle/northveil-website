@@ -261,8 +261,15 @@ h1, h2, h3, h4 {
   font-style: normal;
   color: var(--accent);
 }
+.hero-copy .hero-tagline {
+  margin: 22px 0 0;
+  font-family: var(--font-display);
+  letter-spacing: 0.03em;
+  font-size: 1.35rem;
+  color: var(--accent);
+}
 .hero-copy p {
-  margin: 24px 0 36px;
+  margin: 14px 0 36px;
   max-width: 480px;
   font-size: 1.12rem;
   color: var(--steel);
@@ -365,8 +372,8 @@ section { position: relative; padding: 120px 0; }
 .trust-bar .wrap {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: center;
+  gap: 20px 64px;
 }
 .trust-item {
   display: flex;
@@ -584,32 +591,13 @@ section { position: relative; padding: 120px 0; }
   padding: 16px 18px 18px;
 }
 
-/* ---------- about / founder ---------- */
+/* ---------- about ---------- */
 .about {
   background: var(--near-black);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
-.about .split { align-items: start; }
 .about p { color: var(--steel); font-size: 1.05rem; margin: 18px 0; }
-.founder-card {
-  background: var(--black);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 32px;
-}
-.founder-card .avatar {
-  width: 64px; height: 64px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  color: var(--black);
-}
-.founder-card .who { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
-.founder-card .who strong { display: block; color: var(--white); font-size: 1.05rem; }
-.founder-card .who span { font-size: 0.78rem; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; }
 
 /* ---------- FAQ ---------- */
 .faq-list { border-top: 1px solid var(--line); }
@@ -729,7 +717,7 @@ section { position: relative; padding: 120px 0; }
   .nav-toggle { display: block; }
   .features-grid { grid-template-columns: 1fr; }
   .colorway-grid { grid-template-columns: 1fr 1fr; }
-  .trust-bar .wrap { justify-content: flex-start; gap: 24px 36px; }
+  .trust-bar .wrap { justify-content: center; gap: 16px 36px; }
   .footer-top { grid-template-columns: 1fr; }
   section { padding: 80px 0; }
 }
