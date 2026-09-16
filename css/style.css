@@ -262,7 +262,7 @@ h1, h2, h3, h4 {
   color: var(--accent);
 }
 .hero-copy .hero-tagline {
-  margin: 22px 0 0;
+  margin: 22px 0 36px;
   font-family: var(--font-display);
   letter-spacing: 0.03em;
   font-size: 1.35rem;
