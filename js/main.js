@@ -34,13 +34,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const open = navLinks.style.display === "flex";
     navLinks.style.display = open ? "none" : "flex";
     navLinks.style.flexDirection = "column";
+    navLinks.style.alignItems = "flex-start";
     navLinks.style.position = "absolute";
     navLinks.style.top = "100%";
-    navLinks.style.left = "0";
     navLinks.style.right = "0";
+    navLinks.style.left = "auto";
+    navLinks.style.width = "min(55vw, 190px)";
     navLinks.style.background = "rgba(11,10,8,0.97)";
     navLinks.style.padding = "20px 24px";
     navLinks.style.gap = "18px";
+    navLinks.style.textAlign = "left";
   });
   navLinks.querySelectorAll("a").forEach((a) =>
     a.addEventListener("click", () => {
