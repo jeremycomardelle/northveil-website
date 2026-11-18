@@ -20,6 +20,11 @@ The site currently ships with placeholder/illustrated graphics since no product 
 - **Videos** — edit `js/videos.js`. Add an entry to the `NORTHVEIL_VIDEOS` array for each video (YouTube ID or a self-hosted file dropped into `assets/videos/`). Leave it empty and the site automatically shows "coming soon" placeholder cards.
 - **Amazon store link** — once the Amazon storefront is live, set `AMAZON_STORE_URL` at the top of `js/main.js`. Every "Shop on Amazon" button re-enables automatically.
 - **Social links** — update the Instagram/YouTube/Facebook/LinkedIn URLs in the footer and the "Get Notified" section of `index.html`.
+- **Deals banner** — the slim bar above the header is the `.deal-bar` block at the top of `index.html`. Edit its text and link whenever there's a promotion; delete the block to remove it.
+- **Hero banner** — full-width and light by default (white, showing the device illustration). For a lifestyle photo instead (e.g. someone outside wearing the DMP), drop it in `assets/images/` and change the hero to `<section class="hero hero--photo" style="--hero-image:url(assets/images/hero.jpg)">`. Text and buttons switch to light-on-dark automatically and the device illustration is hidden.
+- **Shop by Product lineup** — the cards in `#lineup`. Swap each card's icon for a product photo when photography exists, and update the status pill (e.g. "Coming soon" → "Available now").
+- **Header search / account** — search is a client-side index of the lineup cards, sections and FAQs (built in `js/main.js`, nothing to configure; new FAQ items are picked up automatically). The account icon opens a menu pointing to Amazon orders and warranty support because the site has no accounts.
+- **Company phone number** — a commented-out `tel:` line sits in the footer's Contact column; uncomment it and fill in the number.
 - **Copy/colors/fonts** — all copy lives directly in `index.html`; the design system (colors, fonts, spacing) is defined as CSS variables at the top of `css/style.css`.
 
 ## Deployment (Azure Static Web Apps)
@@ -33,7 +38,7 @@ This repo deploys via GitHub Actions (`.github/workflows/azure-static-web-apps.y
 ```
 index.html                  Single-page site
 css/style.css                Design system + all styles
-js/main.js                   Nav, scroll reveal, FAQ accordion, Amazon link config
+js/main.js                   Nav, search, account menu, scroll reveal, FAQ accordion, Amazon link config
 js/videos.js                 Video lineup config (see above)
 assets/images/                Drop product photography here
 assets/videos/                Drop self-hosted video files here

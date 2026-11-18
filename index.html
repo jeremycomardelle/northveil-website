@@ -19,46 +19,72 @@
 </head>
 <body>
 
-<div class="marquee">
-  <div class="marquee__track" id="marqueeTrack">
-    <span>Escape the rat race. Be a Wildcat.</span>
-    <span>Where buying = owning.</span>
-    <span>No distractions.</span>
-    <span>Coming soon to Amazon.</span>
-    <span>Escape the rat race. Be a Wildcat.</span>
-    <span>Where buying = owning.</span>
-    <span>No distractions.</span>
-    <span>Coming soon to Amazon.</span>
-  </div>
+<!-- DEALS BANNER — edit the text/link here whenever there's a promotion to announce -->
+<div class="deal-bar" id="dealBar" role="region" aria-label="Current deals">
+  <p>
+    <strong>Launch season</strong>
+    <span class="deal-bar__sep" aria-hidden="true">&#10022;</span>
+    <span>Deals drop with the Wildcat</span>
+    <span class="deal-bar__sep deal-bar__sep--end" aria-hidden="true">&#10022;</span>
+    <a href="#notify">Get notified &rarr;</a>
+  </p>
 </div>
 
 <header class="site-header" id="siteHeader">
   <div class="wrap">
     <a href="#top" class="logo">Northveil<span>.</span></a>
 
-    <nav>
+    <nav aria-label="Primary">
       <ul class="nav-links" id="navLinks">
-        <li><a href="#product">Wildcat</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#colorways">Colorways</a></li>
-        <li><a href="#videos">Videos</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#lineup">Shop by Product</a></li>
+        <li><a href="#faq">FAQs</a></li>
+        <li><a href="#about">About Us</a></li>
       </ul>
     </nav>
 
-    <div class="header-cta">
-      <a href="#notify" class="btn btn-ghost">Get Notified</a>
-      <a href="#" class="btn btn-primary is-disabled" id="amazonBtnHeader" aria-disabled="true">Coming Soon</a>
-    </div>
+    <div class="header-right">
+      <div class="header-tools">
+        <form class="search" id="siteSearch" role="search" autocomplete="off">
+          <label class="sr-only" for="searchInput">Search Northveil</label>
+          <input type="search" id="searchInput" placeholder="Search" aria-controls="searchResults">
+          <button type="submit" class="search__go" aria-label="Search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          </button>
+          <div class="search-results" id="searchResults" hidden></div>
+        </form>
 
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+        <button type="button" class="icon-btn search-toggle" id="searchToggle" aria-label="Open search" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </button>
+
+        <div class="account">
+          <button type="button" class="icon-btn" id="accountBtn" aria-label="Account" aria-haspopup="true" aria-expanded="false" aria-controls="accountMenu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </button>
+          <div class="account-menu" id="accountMenu" hidden>
+            <p class="account-menu__title">Orders &amp; support</p>
+            <p class="account-menu__note">This site has no accounts &mdash; orders are placed and tracked on Amazon.</p>
+            <a href="https://www.amazon.com/gp/css/order-history" target="_blank" rel="noopener">Your Amazon orders</a>
+            <a href="#warranty-policy" data-policy-link="warranty">Warranty claims</a>
+            <a href="#notify">Get notified at launch</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-cta">
+        <a href="#" class="btn btn-primary is-disabled" id="amazonBtnHeader" aria-disabled="true">Coming Soon</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+    </div>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- HERO -->
+  <!-- HERO — full-width banner. Light by default (white, showcasing the device).
+       For a lifestyle photo instead, add class "hero--photo" and set
+       style="--hero-image:url(assets/images/hero.jpg)" on this element (see README). -->
   <section class="hero">
     <div class="wrap">
       <div class="hero-copy reveal">
@@ -190,6 +216,100 @@
       </div>
     </div>
   </section>
+
+  <!-- SHOP BY PRODUCT — lineup starts right below the hero banner -->
+  <section id="lineup" class="lineup">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Shop by product</p>
+        <h2>The Northveil lineup.</h2>
+        <p>The Wildcat leads the way. The gear built around it follows &mdash; here&rsquo;s what&rsquo;s on the way.</p>
+      </div>
+
+      <div class="lineup-grid reveal">
+        <article class="product-card product-card--featured" data-terms="dmp digital music player mp3 wildcat bluetooth">
+          <div class="product-card__media">
+            <span class="pill">Launching this holiday</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><rect x="8.5" y="4.5" width="7" height="8" rx="1"/><circle cx="12" cy="17" r="2.6"/></svg>
+          </div>
+          <div class="product-card__body">
+            <h3>Wildcat DMP</h3>
+            <p>Our distraction-free digital music player. 8 buttons, a scroll wheel, Bluetooth 5.3, zero bloatware.</p>
+            <a href="#features" class="product-card__link">Explore the Wildcat &rarr;</a>
+          </div>
+        </article>
+
+        <article class="product-card" data-terms="arm band holster running biking run bike gym">
+          <div class="product-card__media">
+            <span class="pill">In development</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8c0-1.7 3.6-3 8-3s8 1.3 8 3v8c0 1.7-3.6 3-8 3s-8-1.3-8-3Z"/><rect x="9" y="9" width="6" height="7" rx="1.5"/></svg>
+          </div>
+          <div class="product-card__body">
+            <h3>Armband</h3>
+            <p>A running and biking armband and holster, made to carry the Wildcat wherever you move.</p>
+          </div>
+        </article>
+
+        <article class="product-card" data-terms="earbuds headset audio listening">
+          <div class="product-card__media">
+            <span class="pill">Coming soon</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="7" rx="1.5"/><rect x="17" y="14" width="4" height="7" rx="1.5"/></svg>
+          </div>
+          <div class="product-card__body">
+            <h3>Headphones</h3>
+            <p>Listening gear to pair with your Wildcat.</p>
+          </div>
+        </article>
+
+        <article class="product-card" data-terms="case screen protector charger protection accessories">
+          <div class="product-card__media">
+            <span class="pill">In development</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="4"/><rect x="8" y="7" width="8" height="7" rx="1.5"/></svg>
+          </div>
+          <div class="product-card__body">
+            <h3>Cases</h3>
+            <p>Cases, screen protectors, and chargers to keep your Wildcat protected and powered.</p>
+          </div>
+        </article>
+
+        <article class="product-card" data-terms="apparel shirt tee hoodie hat merch">
+          <div class="product-card__media">
+            <span class="pill">Coming soon</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 3 6l2 4 3-1.5V21h8V8.5L19 10l2-4-5-3a4 4 0 0 1-8 0Z"/></svg>
+          </div>
+          <div class="product-card__body">
+            <h3>Clothes</h3>
+            <p>Northveil apparel, for the people who carry the gear.</p>
+          </div>
+        </article>
+
+        <article class="product-card" data-terms="bundle bundles package deals set kit save">
+          <div class="product-card__media">
+            <span class="pill">Coming soon</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg>
+          </div>
+          <div class="product-card__body">
+            <h3>Package Deals</h3>
+            <p>Bundles that pair the Wildcat with the gear it works best with.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND MARQUEE -->
+  <div class="marquee">
+    <div class="marquee__track" id="marqueeTrack">
+      <span>Escape the rat race. Be a Wildcat.</span>
+      <span>Where buying = owning.</span>
+      <span>No distractions.</span>
+      <span>Coming soon to Amazon.</span>
+      <span>Escape the rat race. Be a Wildcat.</span>
+      <span>Where buying = owning.</span>
+      <span>No distractions.</span>
+      <span>Coming soon to Amazon.</span>
+    </div>
+  </div>
 
   <!-- TRUST BAR -->
   <section class="trust-bar" style="padding-top:28px; padding-bottom:28px;">
@@ -367,11 +487,21 @@
   <!-- ABOUT -->
   <section id="about" class="about">
     <div class="wrap">
-      <div class="reveal" style="max-width:640px; margin:0 auto; text-align:center;">
-        <p class="eyebrow" style="justify-content:center;">About Northveil</p>
+      <div class="about-inner reveal">
+        <p class="eyebrow" style="justify-content:center;">About us</p>
         <h2>Built in America. Built to be trusted.</h2>
-        <p>Northveil Technologies was founded to build products for people who are tired of subscriptions, algorithms, and devices designed to keep them scrolling. The Wildcat is our first product, built to do exactly what it's supposed to and nothing more.</p>
-        <p>We're not trying to be the biggest name in tech. We're trying to be the one you actually trust &mdash; the kind of company whose gear you rebuy, wear, and recommend.</p>
+
+        <div class="about-block">
+          <h3>Who is Northveil?</h3>
+          <!-- DRAFT: Chase's slide stopped at "Northveil Technologies is an Audio . . . ." — confirm the wording. -->
+          <p>Northveil Technologies is an audio technology company building products for people who are tired of subscriptions, algorithms, and devices designed to keep them scrolling. The Wildcat is our first product, built to do exactly what it&rsquo;s supposed to and nothing more.</p>
+        </div>
+
+        <div class="about-block">
+          <h3>What does Northveil represent?</h3>
+          <blockquote class="about-quote">&ldquo;Northveil&rsquo;s purpose is to be a veil, laid upon your head, so you may focus not on the distractions next to you or the mistakes behind you, but on the goals, challenges, and day that await in front of you.&rdquo;</blockquote>
+        </div>
+
         <p style="display:flex; align-items:center; justify-content:center; gap:12px; color:var(--cream); font-weight:600;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" style="flex-shrink:0;"><path d="M12 21C7 17 3 13.5 3 9.5 3 6.5 5.5 4 8.5 4c1.7 0 3.2.8 4.2 2.1C13.7 4.8 15.2 4 16.9 4 19.9 4 22 6.5 22 9.5 22 13.5 18 17 13 21Z"/></svg>
           Meet Alt, our wildcat mascot &mdash; full reveal coming soon.
@@ -473,7 +603,7 @@
       <div class="footer-col">
         <h5>Explore</h5>
         <ul>
-          <li><a href="#product">Wildcat</a></li>
+          <li><a href="#lineup">Shop by Product</a></li>
           <li><a href="#features">Features</a></li>
           <li><a href="#colorways">Colorways</a></li>
           <li><a href="#videos">Videos</a></li>
@@ -482,8 +612,8 @@
       <div class="footer-col">
         <h5>Company</h5>
         <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#faq">FAQs</a></li>
           <li><a href="#notify">Get Notified</a></li>
         </ul>
       </div>
@@ -491,16 +621,149 @@
         <h5>Contact</h5>
         <ul>
           <li><a href="mailto:Northveiltechnologies@gmail.com">Northveiltechnologies@gmail.com</a></li>
+          <!-- Company phone number: uncomment and fill in once there's one to publish.
+          <li><a href="tel:+10000000000">(000) 000-0000</a></li> -->
           <li><a href="#" class="is-disabled" aria-disabled="true">Amazon Store (soon)</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>&copy; <span id="year"></span> Northveil Technologies. All rights reserved.</span>
+      <nav class="footer-legal" aria-label="Policies">
+        <a href="#warranty-policy" data-policy-link="warranty">Warranty</a>
+        <a href="#privacy-policy" data-policy-link="privacy">Privacy</a>
+        <a href="#returns-policy" data-policy-link="returns">Returns &amp; Shipping</a>
+      </nav>
       <span>Wildcat&trade; is a product of Northveil Technologies.</span>
     </div>
   </div>
 </footer>
+
+<!-- POLICY OVERLAY — opened by [data-policy-link] or a #<key>-policy deep link -->
+<dialog class="policy-dialog" id="policyDialog" aria-labelledby="policyDialogTitle">
+  <div class="policy-dialog__head">
+    <h2 id="policyDialogTitle">Policy</h2>
+    <button type="button" class="policy-dialog__close" aria-label="Close" data-policy-close>&times;</button>
+  </div>
+
+  <div class="policy-dialog__body" tabindex="0">
+
+    <!-- WARRANTY -->
+    <article data-policy="warranty" data-title="Limited Warranty" hidden>
+      <p class="policy-dialog__effective">Northveil Technologies &mdash; Effective Date: October 6, 2026</p>
+
+      <h3>1. One-Year Limited Warranty</h3>
+      <p>Northveil Technologies (&ldquo;Northveil,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) warrants the Wildcat digital music player, and Northveil-branded accessories included in the box, against defects in materials and workmanship under normal use for one (1) year from the date of original retail purchase.</p>
+      <p>This warranty is extended to the original purchaser of a new product bought from Northveil or an authorized retailer, including the Northveil store on Amazon.</p>
+
+      <h3>2. What Is Covered</h3>
+      <p>This warranty covers failures caused by a manufacturing defect, including defects in the buttons, scroll wheel, screen, headphone jack, charging port, Bluetooth hardware, internal storage, and battery.</p>
+
+      <h3>3. What Is Not Covered</h3>
+      <p>This warranty does not cover:</p>
+      <ul>
+        <li>normal wear and tear, including scratches, dents, and other cosmetic damage;</li>
+        <li>gradual reduction in battery capacity that occurs with normal use over time;</li>
+        <li>damage from drops, impact, crushing, liquid, extreme heat or cold, or other accidents;</li>
+        <li>damage from misuse, abuse, or use not in accordance with the product&rsquo;s instructions;</li>
+        <li>damage caused by chargers, cables, headphones, or other accessories not made by Northveil;</li>
+        <li>damage caused by repairs or modifications performed by anyone other than Northveil or a service provider we authorize;</li>
+        <li>loss or corruption of music, files, or other data stored on the device;</li>
+        <li>products with a removed or altered serial number; or</li>
+        <li>products that were lost or stolen.</li>
+      </ul>
+      <p>Please keep a backup of your music library. Warranty service may require the device to be reset, and we are not responsible for data stored on a device sent in for service.</p>
+
+      <h3>4. How to Make a Claim</h3>
+      <p>Email us at <a href="mailto:Northveiltechnologies@gmail.com">Northveiltechnologies@gmail.com</a> before the warranty period ends. Include your name, your order number or other proof of purchase, a description of the problem, and photos or a short video if they help show the issue.</p>
+      <p>We will reply with troubleshooting steps or instructions for returning the product. Please do not send a product to us without contacting us first.</p>
+
+      <h3>5. What We Will Do</h3>
+      <p>If we confirm a covered defect, we will, at our option, repair the product, replace it with a new or refurbished product of equal or better function, or refund the purchase price. A repaired or replacement product is covered for the remainder of the original warranty period or ninety (90) days, whichever is longer.</p>
+      <p>We will cover the cost of return shipping for an approved warranty claim within the United States.</p>
+
+      <h3>6. Limits on Implied Warranties and Damages</h3>
+      <p>Any implied warranties, including implied warranties of merchantability and fitness for a particular purpose, are limited in duration to the one-year period of this limited warranty. Some states do not allow limitations on how long an implied warranty lasts, so the above limitation may not apply to you.</p>
+      <p>Northveil is not liable for incidental or consequential damages arising from the use of, or inability to use, the product. Some states do not allow the exclusion or limitation of incidental or consequential damages, so the above limitation or exclusion may not apply to you.</p>
+      <p>This warranty gives you specific legal rights, and you may also have other rights that vary from state to state.</p>
+
+      <h3>7. Changes to This Warranty</h3>
+      <p>We may update this warranty for future purchases. The warranty in effect on the date of your purchase applies to that product.</p>
+
+      <h3>8. Contact Us</h3>
+      <p>Northveil Technologies<br>
+      <a href="mailto:Northveiltechnologies@gmail.com">Northveiltechnologies@gmail.com</a></p>
+    </article>
+
+    <!-- PRIVACY -->
+    <article data-policy="privacy" data-title="Privacy Policy" hidden>
+      <p class="policy-dialog__effective">Northveil Technologies &mdash; Effective Date: October 6, 2026</p>
+
+      <p>Northveil Technologies (&ldquo;Northveil,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) respects your privacy. This Privacy Policy explains what information we collect when you visit this website, contact us, or buy a Northveil product, and how we use it.</p>
+
+      <h3>1. Information We Collect</h3>
+      <p><strong>When you browse this website.</strong> This website has no accounts, sign-up forms, or checkout. We do not use our own advertising or analytics cookies on it. Like most websites, our hosting provider automatically records basic technical information when you visit, such as your IP address, browser type, the pages you request, and the date and time of your visit. This information is used to deliver the site and keep it secure.</p>
+      <p><strong>When you contact us.</strong> If you email us, we receive your email address, your name if you include it, and anything you choose to write to us.</p>
+      <p><strong>When you buy a Wildcat.</strong> Purchases are made through Amazon. Amazon handles payment, and we never receive your payment-card details. Amazon may share limited order information with us, such as your name, shipping address, and the items ordered, so the order can be fulfilled and supported.</p>
+      <p><strong>When you use your Wildcat.</strong> The Wildcat does not require an account and does not send your listening history or usage data to us.</p>
+
+      <h3>2. How We Use Information</h3>
+      <p>We use the information described above to:</p>
+      <ul>
+        <li>operate, maintain, and secure this website;</li>
+        <li>respond to your questions and requests;</li>
+        <li>fulfill orders and provide customer and warranty support;</li>
+        <li>send you updates you have asked to receive; and</li>
+        <li>comply with legal obligations and protect our rights.</li>
+      </ul>
+
+      <h3>3. How We Share Information</h3>
+      <p>We do not sell your personal information, and we do not share it for cross-context behavioral advertising.</p>
+      <p>We share information only with service providers that help us run our business, such as our website host, email provider, and shipping carriers, and only as needed for them to provide those services. We may also disclose information if required by law, or to protect the rights, safety, or property of Northveil, our customers, or others.</p>
+
+      <h3>4. Third-Party Sites and Embedded Content</h3>
+      <p>This website links to, and may embed content from, third-party services such as Amazon, YouTube, Instagram, Facebook, and LinkedIn. When you visit those services or interact with their embedded content, they may collect information about you and set their own cookies under their own privacy policies. We do not control those services.</p>
+
+      <h3>5. Data Retention</h3>
+      <p>We keep emails and order information only as long as needed to respond to you, support your product during its warranty period, and meet our legal and accounting obligations.</p>
+
+      <h3>6. Security</h3>
+      <p>We use reasonable measures to protect the information we hold. No method of transmitting or storing information is completely secure, so we cannot guarantee absolute security.</p>
+
+      <h3>7. Children&rsquo;s Privacy</h3>
+      <p>This website is not directed to children under 13, and we do not knowingly collect personal information from children under 13. If you believe a child has sent us personal information, please contact us and we will delete it.</p>
+
+      <h3>8. Your Choices and Rights</h3>
+      <p>You may ask us to tell you what personal information we hold about you, correct it, or delete it. You may also unsubscribe from any update emails at any time. Depending on where you live, you may have additional rights under applicable law. To make a request, email us at the address below. We may need to verify your identity before completing a request.</p>
+
+      <h3>9. Changes to This Policy</h3>
+      <p>We may update this Privacy Policy from time to time. When we do, we will change the effective date at the top of this policy.</p>
+
+      <h3>10. Contact Us</h3>
+      <p>Northveil Technologies<br>
+      <a href="mailto:Northveiltechnologies@gmail.com">Northveiltechnologies@gmail.com</a></p>
+    </article>
+
+    <!-- RETURNS & SHIPPING -->
+    <article data-policy="returns" data-title="Returns &amp; Shipping" hidden>
+      <p class="policy-dialog__effective">Northveil Technologies &mdash; Effective Date: October 6, 2026</p>
+
+      <h3>Orders Placed on Amazon</h3>
+      <p>The Wildcat is sold through Amazon. Shipping, delivery, and returns for Amazon orders are handled under Amazon&rsquo;s policies. To start a return or check on a shipment, go to <strong>Your Orders</strong> in your Amazon account.</p>
+
+      <h3>Defective Products</h3>
+      <p>If your Wildcat stops working because of a defect after Amazon&rsquo;s return window has closed, it may be covered by our one-year <a href="#warranty-policy" data-policy-link="warranty">Limited Warranty</a>.</p>
+
+      <h3>Questions</h3>
+      <p>Email us at <a href="mailto:Northveiltechnologies@gmail.com">Northveiltechnologies@gmail.com</a> and we will help.</p>
+    </article>
+
+  </div>
+
+  <div class="policy-dialog__foot">
+    <button type="button" class="btn btn-primary" data-policy-close>Close</button>
+  </div>
+</dialog>
 
 <script src="js/videos.js"></script>
 <script src="js/main.js"></script>
