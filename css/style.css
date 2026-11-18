@@ -14,6 +14,9 @@
   --steel: #8a8f98;
   --line: rgba(242, 232, 213, 0.14);
 
+  --pearl: #f8f6f1;
+  --pearl-deep: #eeebe2;
+
   --font-display: "Bebas Neue", "Oswald", sans-serif;
   --font-script: "Alex Brush", cursive;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -245,6 +248,11 @@ h1, h2, h3, h4 {
 .nav-links a:hover { opacity: 1; }
 .nav-links a:hover::after { width: 100%; }
 
+/* Desktop: header spans the full width, with the logo and nav tucked to the left. */
+@media (min-width: 721px) {
+  .site-header .wrap { max-width: none; padding-left: clamp(20px, 2.5vw, 40px); padding-right: clamp(20px, 2.5vw, 40px); }
+  .site-header nav { margin-left: clamp(28px, 3.5vw, 56px); margin-right: auto; }
+}
 .header-right { display: flex; align-items: center; gap: 14px; }
 .header-tools { display: flex; align-items: center; gap: 10px; }
 .header-cta { display: flex; align-items: center; gap: 16px; }
@@ -434,7 +442,7 @@ h1, h2, h3, h4 {
   align-items: center;
 }
 .hero--photo .wrap { grid-template-columns: 1fr; }
-.hero--photo .device-stage { display: none; }
+.hero--photo .hero-media { display: none; }
 .hero-copy h1 {
   font-size: clamp(3rem, 6.5vw, 5.6rem);
   color: var(--hero-ink);
@@ -490,26 +498,28 @@ h1, h2, h3, h4 {
   color: var(--hero-muted);
 }
 
-/* ---------- device illustration ---------- */
-.device-stage {
-  position: relative;
+/* ---------- hero picture placeholder ---------- */
+.hero-media { display: flex; align-items: center; justify-content: center; }
+.hero-placeholder {
+  width: min(420px, 90%);
+  aspect-ratio: 4 / 5;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 16px;
+  border: 2px dashed var(--hero-line);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--hero-muted);
 }
-.device-glow {
-  position: absolute;
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, var(--hero-glow, var(--accent-glow)), transparent 70%);
-  filter: blur(10px);
-  animation: pulse 4s ease-in-out infinite;
+.hero-placeholder svg { width: 56px; height: 56px; }
+.hero-placeholder span {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 0.85; }
-  50% { transform: scale(1.08); opacity: 1; }
-}
-.device-svg { position: relative; width: min(360px, 80%); filter: drop-shadow(0 28px 36px rgba(11, 10, 8, 0.35)); }
 
 /* ---------- section shell ---------- */
 section { position: relative; padding: 120px 0; }
@@ -609,158 +619,7 @@ section { position: relative; padding: 120px 0; }
 }
 .trust-item svg { width: 20px; height: 20px; color: var(--accent); flex-shrink: 0; }
 
-/* ---------- features ---------- */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  background: var(--line);
-  border: 1px solid var(--line);
-}
-.feature-card {
-  background: var(--near-black);
-  padding: 38px 32px;
-  transition: background 0.25s ease, transform 0.25s ease;
-}
-.feature-card:hover { background: var(--charcoal); transform: translateY(-4px); }
-.feature-card .icon {
-  width: 46px; height: 46px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--accent);
-  margin-bottom: 22px;
-}
-.feature-card .icon svg { width: 24px; height: 24px; }
-.feature-card h3 {
-  font-family: var(--font-body);
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--white);
-}
-.feature-card p {
-  margin: 10px 0 0;
-  font-size: 0.94rem;
-  color: var(--steel);
-}
-
-/* ---------- why / split ---------- */
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
-}
-.why-list { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 20px; }
-.why-list li {
-  display: flex;
-  gap: 16px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--line);
-}
-.why-list li:last-child { border-bottom: none; }
-.why-list .num {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  color: var(--accent);
-  min-width: 34px;
-}
-.why-list h4 { font-family: var(--font-body); text-transform: none; letter-spacing: 0; font-size: 1.05rem; color: var(--white); }
-.why-list p { margin: 6px 0 0; color: var(--steel); font-size: 0.94rem; }
-
-.tagline-card {
-  background: linear-gradient(155deg, var(--charcoal), var(--near-black));
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 48px;
-  position: relative;
-  overflow: hidden;
-}
-.tagline-card::before {
-  content: "\201C";
-  position: absolute;
-  top: -30px; left: 20px;
-  font-size: 12rem;
-  font-family: Georgia, serif;
-  color: rgba(255, 255, 255, 0.12);
-  line-height: 1;
-}
-.tagline-card p {
-  position: relative;
-  font-family: var(--font-display);
-  font-size: 2rem;
-  color: var(--white);
-  line-height: 1.2;
-}
-.tagline-card span {
-  position: relative;
-  display: block;
-  margin-top: 20px;
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  color: var(--accent);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-/* ---------- colorways ---------- */
-.colorway-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-.colorway-card {
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: var(--near-black);
-  transition: transform 0.25s ease, border-color 0.25s ease;
-}
-.colorway-card:hover { transform: translateY(-6px); border-color: var(--accent); }
-.swatch {
-  aspect-ratio: 4 / 3;
-  position: relative;
-}
-.swatch::after {
-  content: "";
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.55));
-}
-.swatch-steel { background: linear-gradient(135deg, #cfd3d8, #7c828c 45%, #3d4148); }
-.swatch-americana { background: linear-gradient(135deg, #1f2b52 0 33%, #f2e8d5 33% 66%, #8c1f2b 66% 100%); }
-.swatch-darkcamo {
-  background-color: #23261f;
-  background-image:
-    radial-gradient(circle at 20% 30%, #33392b 0 22%, transparent 23%),
-    radial-gradient(circle at 70% 60%, #14150f 0 26%, transparent 27%),
-    radial-gradient(circle at 45% 80%, #3d4430 0 18%, transparent 19%),
-    radial-gradient(circle at 85% 20%, #454b38 0 20%, transparent 21%);
-}
-.swatch-whitecamo {
-  background-color: #e9e4d6;
-  background-image:
-    radial-gradient(circle at 25% 35%, #cfc8b2 0 22%, transparent 23%),
-    radial-gradient(circle at 75% 65%, #b9b192 0 26%, transparent 27%),
-    radial-gradient(circle at 50% 85%, #d9d3bf 0 18%, transparent 19%),
-    radial-gradient(circle at 85% 15%, #cac2a6 0 20%, transparent 21%);
-}
-.colorway-card h4 {
-  font-family: var(--font-body);
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--white);
-  padding: 16px 18px 4px;
-}
-.colorway-card p {
-  margin: 0;
-  padding: 0 18px 18px;
-  font-size: 0.8rem;
-  color: var(--steel);
-}
+/* ---------- pill labels ---------- */
 .pill {
   position: absolute;
   top: 12px; left: 12px;
@@ -993,6 +852,35 @@ section { position: relative; padding: 120px 0; }
 .policy-dialog__foot .btn { padding: 10px 26px; font-size: 0.95rem; }
 body.is-policy-open { overflow: hidden; }
 
+/* ---------- pearl theme ----------
+   Everything below the hero banner, through the footer, carries the .pearl class.
+   Instead of rewriting each component, .pearl re-maps the dark-theme color tokens
+   (white = strong text, cream = body text, near-black = card surface, ...), so the shared
+   rules (cards, FAQ, footer, buttons...) render dark-on-light. To put a section back on
+   black, just remove "pearl" from its class list. */
+.pearl {
+  --white: #14120f;
+  --cream: #2b2823;
+  --steel: #5e5a52;
+  --near-black: #ffffff;
+  --charcoal: #ece8de;
+  --accent: #14120f;
+  --accent-dark: #3a362f;
+  --accent-glow: rgba(20, 18, 15, 0.22);
+  --line: rgba(20, 18, 15, 0.14);
+  background: var(--pearl);
+  color: var(--cream);
+}
+.pearl .btn-primary { color: var(--pearl); }          /* accent is dark here, so flip the label */
+.pearl.about { background: #ffffff; }                 /* gentle alternation for rhythm */
+.pearl.marquee { background: var(--pearl-deep); color: var(--white); border-color: var(--line); }
+.pearl.cta-band { background: var(--pearl-deep); border-top: 1px solid var(--line); }
+.pearl.cta-band .btn-primary:hover { background: #2a2723; }
+.pearl .product-card { box-shadow: 0 1px 2px rgba(20, 18, 15, 0.04), 0 14px 30px -20px rgba(20, 18, 15, 0.3); }
+.pearl .product-card__media { background: radial-gradient(70% 70% at 50% 40%, #ffffff, #ece8de 85%); }
+.pearl .pill { background: rgba(255, 255, 255, 0.92); color: var(--white); border-color: var(--line); }
+.pearl .product-card--featured .pill { background: var(--white); color: var(--pearl); border-color: var(--white); }
+
 /* ---------- responsive ---------- */
 @media (max-width: 1100px) {
   .header-cta { display: none; }
@@ -1000,12 +888,10 @@ body.is-policy-open { overflow: hidden; }
 
 @media (max-width: 980px) {
   .hero .wrap { grid-template-columns: 1fr; }
-  .device-stage { order: -1; }
+  .hero-media { order: -1; }
+  .hero-placeholder { width: 100%; aspect-ratio: 16 / 10; }
   .search { width: 180px; }
   .lineup-grid { grid-template-columns: repeat(2, 1fr); }
-  .features-grid { grid-template-columns: repeat(2, 1fr); }
-  .split { grid-template-columns: 1fr; gap: 40px; }
-  .colorway-grid { grid-template-columns: repeat(2, 1fr); }
   .video-grid { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr 1fr; }
 }
@@ -1032,8 +918,6 @@ body.is-policy-open { overflow: hidden; }
   .search input { height: 42px; font-size: 16px; }
   .search__go { right: 30px; }
   .search-results { left: 24px; right: 24px; min-width: 0; }
-  .features-grid { grid-template-columns: 1fr; }
-  .colorway-grid { grid-template-columns: 1fr 1fr; }
   .trust-bar .wrap { justify-content: center; gap: 16px 36px; }
   .footer-top { grid-template-columns: 1fr; }
   section { padding: 80px 0; }
