@@ -85,8 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchToggle = document.getElementById("searchToggle");
 
   const sectionEntries = [
-    { label: "Features", id: "features", terms: "buttons scroll wheel bluetooth bloatware formats" },
-    { label: "Colorways", id: "colorways", terms: "colors steel americana camo limited" },
     { label: "Videos", id: "videos", terms: "watch walkthrough" },
     { label: "About Us", id: "about", terms: "who northveil company mission represent" },
     { label: "Get notified", id: "notify", terms: "launch instagram follow amazon" },

@@ -82,7 +82,8 @@
 
 <main id="top">
 
-  <!-- HERO — full-width banner. Light by default (white, showcasing the device).
+  <!-- HERO — full-width banner. Light by default, with a "Picture coming soon" placeholder
+       (.hero-placeholder) until real imagery exists.
        For a lifestyle photo instead, add class "hero--photo" and set
        style="--hero-image:url(assets/images/hero.jpg)" on this element (see README). -->
   <section class="hero">
@@ -114,111 +115,17 @@
         </div>
       </div>
 
-      <div class="device-stage reveal">
-        <div class="device-glow"></div>
-        <svg class="device-svg" viewBox="0 0 360 640" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#2a2723"/>
-              <stop offset="55%" stop-color="#171512"/>
-              <stop offset="100%" stop-color="#0b0a08"/>
-            </linearGradient>
-            <linearGradient id="screenGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#3a2418"/>
-              <stop offset="100%" stop-color="#160f0a"/>
-            </linearGradient>
-            <linearGradient id="artGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#4a2e1c"/>
-              <stop offset="100%" stop-color="#241509"/>
-            </linearGradient>
-            <radialGradient id="wheelGrad" cx="35%" cy="30%" r="75%">
-              <stop offset="0%" stop-color="#3a3733"/>
-              <stop offset="100%" stop-color="#100f0d"/>
-            </radialGradient>
-          </defs>
-
-          <rect x="18" y="10" width="324" height="620" rx="46" fill="url(#bodyGrad)" stroke="#3a352d" stroke-width="2"/>
-
-          <!-- screen: bigger, portrait-rectangular -->
-          <rect x="60" y="42" width="240" height="320" rx="16" fill="url(#screenGrad)" stroke="#4a3220" stroke-width="1.5"/>
-          <text x="80" y="84" fill="#ffffff" font-family="Bebas Neue, sans-serif" font-size="22" letter-spacing="1">WILDCAT</text>
-          <text x="80" y="106" fill="#c9bfae" font-family="Inter, sans-serif" font-size="12">Now Playing</text>
-
-          <rect x="110" y="122" width="140" height="140" rx="10" fill="url(#artGrad)" stroke="#4a3220" stroke-width="1"/>
-          <circle cx="180" cy="192" r="26" fill="none" stroke="#5a3d26" stroke-width="2"/>
-          <circle cx="180" cy="192" r="5" fill="#5a3d26"/>
-          <g fill="#ffffff">
-            <rect x="234" y="134" width="3" height="10" rx="1.5"/>
-            <rect x="240" y="130" width="3" height="14" rx="1.5"/>
-            <rect x="246" y="137" width="3" height="7" rx="1.5"/>
-          </g>
-
-          <text x="80" y="288" fill="#f2e8d5" font-family="Inter, sans-serif" font-size="14" font-weight="600">Late Night Drive</text>
-          <text x="80" y="308" fill="#8a8f98" font-family="Inter, sans-serif" font-size="11">Track 7 of 42 &#8226; 3:12</text>
-          <rect x="80" y="326" width="200" height="3" rx="1.5" fill="#3a2c20"/>
-          <rect x="80" y="326" width="125" height="3" rx="1.5" fill="#ffffff"/>
-
-          <!-- 3-button row -->
-          <g style="cursor:pointer;">
-            <title>Style &mdash; shuffle playback</title>
-            <rect x="50" y="382" width="78" height="34" rx="10" fill="#161310" stroke="#3a352d" stroke-width="1.5"/>
-            <g fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M81 392 98 406"/>
-              <path d="M93 406 99 406 99 400"/>
-              <path d="M81 406 98 392"/>
-              <path d="M93 392 99 392 99 398"/>
-            </g>
-          </g>
-          <g style="cursor:pointer;">
-            <title>Queue &mdash; up next</title>
-            <rect x="141" y="382" width="78" height="34" rx="10" fill="#161310" stroke="#3a352d" stroke-width="1.5"/>
-            <text x="180" y="405" fill="#ffffff" font-family="Bebas Neue, sans-serif" font-size="18" text-anchor="middle">Q</text>
-          </g>
-          <g style="cursor:pointer;">
-            <title>Remove &mdash; delete from library</title>
-            <rect x="232" y="382" width="78" height="34" rx="10" fill="#161310" stroke="#3a352d" stroke-width="1.5"/>
-            <g fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M263 394h16"/>
-              <path d="M267 394v-2c0-.6.4-1 1-1h4c.6 0 1 .4 1 1v2"/>
-              <path d="M265 394l1 12.5c.1 1 .9 1.5 1.8 1.5h6.4c.9 0 1.7-.5 1.8-1.5l1-12.5"/>
-            </g>
-          </g>
-
-          <!-- click wheel -->
-          <circle cx="180" cy="528" r="92" fill="url(#wheelGrad)" stroke="#3a352d" stroke-width="2"/>
-
-          <g fill="none" stroke="#c9bfae" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor:pointer;">
-            <title>Return &mdash; go back</title>
-            <path d="M192 456v13a12 12 0 0 1-12 12 12 12 0 0 1-12-12v-13"/>
-            <path d="M162 461 168 455 174 461"/>
-          </g>
-
-          <g fill="none" stroke="#c9bfae" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor:pointer;">
-            <title>Previous track</title>
-            <path d="M126 523 114 528 126 533 M116 523 104 528 116 533"/>
-          </g>
-          <g fill="none" stroke="#c9bfae" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor:pointer;">
-            <title>Next track</title>
-            <path d="M234 523 246 528 234 533 M244 523 256 528 244 533"/>
-          </g>
-
-          <g style="cursor:pointer;">
-            <title>Home &mdash; main menu</title>
-            <path d="M180 586 190 596 184 596 184 606 176 606 176 596 170 596 Z" fill="#c9bfae"/>
-          </g>
-
-          <g style="cursor:pointer;">
-            <title>Play / Pause</title>
-            <circle cx="180" cy="528" r="36" fill="#0b0a08" stroke="#3a352d" stroke-width="2"/>
-            <path d="M172 515 172 541 195 528 Z" fill="#ffffff"/>
-          </g>
-        </svg>
+      <div class="hero-media reveal">
+        <div class="hero-placeholder" role="img" aria-label="Product picture coming soon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="8.5" cy="10" r="1.6"/><path d="m21 16-5-5-8 8"/></svg>
+          <span>Picture coming soon</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- SHOP BY PRODUCT — lineup starts right below the hero banner -->
-  <section id="lineup" class="lineup">
+  <section id="lineup" class="lineup pearl">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">Shop by product</p>
@@ -235,7 +142,7 @@
           <div class="product-card__body">
             <h3>Wildcat DMP</h3>
             <p>Our distraction-free digital music player. 8 buttons, a scroll wheel, Bluetooth 5.3, zero bloatware.</p>
-            <a href="#features" class="product-card__link">Explore the Wildcat &rarr;</a>
+            <a href="#notify" class="product-card__link">Get notified at launch &rarr;</a>
           </div>
         </article>
 
@@ -298,7 +205,7 @@
   </section>
 
   <!-- BRAND MARQUEE -->
-  <div class="marquee">
+  <div class="marquee pearl">
     <div class="marquee__track" id="marqueeTrack">
       <span>Escape the rat race. Be a Wildcat.</span>
       <span>Where buying = owning.</span>
@@ -312,7 +219,7 @@
   </div>
 
   <!-- TRUST BAR -->
-  <section class="trust-bar" style="padding-top:28px; padding-bottom:28px;">
+  <section class="trust-bar pearl" style="padding-top:28px; padding-bottom:28px;">
     <div class="wrap">
       <div class="trust-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/></svg>
@@ -325,152 +232,8 @@
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <section id="features">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Built different</p>
-        <h2>Every detail has a job.</h2>
-        <p>The Wildcat strips a music player back to what actually matters &mdash; and leaves out everything that doesn't.</p>
-      </div>
-
-      <div class="features-grid reveal">
-        <div class="feature-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></div>
-          <h3>8 buttons + scroll wheel</h3>
-          <p>Tactile, click-wheel navigation built for muscle memory &mdash; skip, scrub, and browse without ever looking down.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 18h.01"/></svg></div>
-          <h3>Pocket-sized</h3>
-          <p>Small enough to disappear in a pocket, armband, or gym bag &mdash; built for runs, lifts, and long drives.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 0 1 8-8"/><path d="M20 12a8 8 0 0 1-8 8"/><path d="m9 9 6 6"/></svg></div>
-          <h3>Bluetooth 5.3+ &amp; aux</h3>
-          <p>Go wireless with the latest Bluetooth, or plug straight in with the 3.5mm jack. Your call.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-          <h3>Plays what you already own</h3>
-          <p>MP3, M4A, WAV, FLAC, and more &mdash; drag your library over and go. No proprietary format nonsense.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 7v6c0 5 4 8.5 9 9 5-.5 9-4 9-9V7l-9-5Z"/></svg></div>
-          <h3>Zero bloatware</h3>
-          <p>No FM radio nobody uses, no half-baked apps, no notifications. A custom OS built to do one thing well.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 11-13h-7l1-7Z"/></svg></div>
-          <h3>Built for movement</h3>
-          <p>A dedicated arm band and holster are in the works &mdash; made for runners and riders, not desks.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY / PRODUCT -->
-  <section id="product">
-    <div class="wrap">
-      <div class="split">
-        <div class="reveal">
-          <p class="eyebrow">Why Northveil</p>
-          <h2>Most digital music players are ghosts.</h2>
-          <ul class="why-list">
-            <li>
-              <span class="num">01</span>
-              <div>
-                <h4>No website. No presence. No trust.</h4>
-                <p>Most DMPs on the market are carelessly designed overseas and sold under random, throwaway brand names with no company behind them.</p>
-              </div>
-            </li>
-            <li>
-              <span class="num">02</span>
-              <div>
-                <h4>Northveil is a real company, not a listing.</h4>
-                <p>The Wildcat is designed and backed by Northveil Technologies &mdash; a company you can find, follow, and hold accountable.</p>
-              </div>
-            </li>
-            <li>
-              <span class="num">03</span>
-              <div>
-                <h4>Built for people who buy once.</h4>
-                <p>People rebuy from brands they trust. The Wildcat is designed to be the first purchase in a lineup you'll want to keep coming back to.</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="tagline-card reveal">
-          <p>&#8220;Where buying = owning.&#8221;</p>
-          <span>&mdash; Northveil Technologies</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHO IT'S FOR -->
-  <section id="who-its-for" style="padding-top:0; padding-bottom:60px;">
-    <div class="wrap">
-      <div class="section-head center reveal">
-        <p class="eyebrow">Built for</p>
-        <h2>Anyone tired of their phone running their life.</h2>
-      </div>
-      <div class="features-grid reveal">
-        <div class="feature-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg></div>
-          <h3>Students</h3>
-          <p>Heads-down study sessions without a phone screen begging for attention every thirty seconds.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 11-13h-7l1-7Z"/></svg></div>
-          <h3>Athletes &amp; runners</h3>
-          <p>Light, pocketable, armband-ready &mdash; built to keep up on the run, at the gym, or on the trail.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21C7 17 3 13.5 3 9.5 3 6.5 5.5 4 8.5 4c1.7 0 3.2.8 4.2 2.1C13.7 4.8 15.2 4 16.9 4 19.9 4 22 6.5 22 9.5 22 13.5 18 17 13 21Z"/></svg></div>
-          <h3>Anyone escaping the noise</h3>
-          <p>One button press, no phone required &mdash; just the music you already own, whenever you want it.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COLORWAYS -->
-  <section id="colorways">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Limited editions</p>
-        <h2>Four looks. One Wildcat.</h2>
-        <p>Every Wildcat ships in a finish built around Northveil's core palette of black, white, and one bold accent &mdash; plus a rotating cast of limited-edition colorways.</p>
-      </div>
-
-      <div class="colorway-grid reveal">
-        <div class="colorway-card">
-          <div class="swatch swatch-steel"><span class="pill">Core</span></div>
-          <h4>Steel</h4>
-          <p>Brushed, understated, everyday-ready.</p>
-        </div>
-        <div class="colorway-card">
-          <div class="swatch swatch-americana"><span class="pill">Limited</span></div>
-          <h4>Americana</h4>
-          <p>Bold red, cream, and navy &mdash; worn proud.</p>
-        </div>
-        <div class="colorway-card">
-          <div class="swatch swatch-darkcamo"><span class="pill">Limited</span></div>
-          <h4>Dark Camo</h4>
-          <p>Built to disappear into the trail.</p>
-        </div>
-        <div class="colorway-card">
-          <div class="swatch swatch-whitecamo"><span class="pill">Limited</span></div>
-          <h4>White Camo</h4>
-          <p>A lighter take on the same rugged pattern.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- VIDEOS -->
-  <section id="videos">
+  <section id="videos" class="pearl">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">See it in motion</p>
@@ -485,7 +248,7 @@
   </section>
 
   <!-- ABOUT -->
-  <section id="about" class="about">
+  <section id="about" class="about pearl">
     <div class="wrap">
       <div class="about-inner reveal">
         <p class="eyebrow" style="justify-content:center;">About us</p>
@@ -511,7 +274,7 @@
   </section>
 
   <!-- FAQ -->
-  <section id="faq">
+  <section id="faq" class="pearl">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">Questions</p>
@@ -566,7 +329,7 @@
   </section>
 
   <!-- NOTIFY CTA -->
-  <section id="notify" class="cta-band">
+  <section id="notify" class="cta-band pearl">
     <div class="wrap">
       <p class="eyebrow" style="color:rgba(11,10,8,0.65);">Launching soon</p>
       <h2>Be first to own a Wildcat.</h2>
@@ -580,7 +343,7 @@
 
 </main>
 
-<footer class="site-footer">
+<footer class="site-footer pearl">
   <div class="wrap">
     <div class="footer-top">
       <div>
@@ -604,8 +367,6 @@
         <h5>Explore</h5>
         <ul>
           <li><a href="#lineup">Shop by Product</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#colorways">Colorways</a></li>
           <li><a href="#videos">Videos</a></li>
         </ul>
       </div>
