@@ -6,16 +6,16 @@
   --black: #0b0a08;
   --near-black: #141210;
   --charcoal: #1e1b17;
-  --cream: #f2e8d5;
-  --white: #fbf7ee;
+  --cream: #e8eaee;
+  --white: #fafbfc;
   --accent: #ffffff;
-  --accent-dark: #cfc9ba;
+  --accent-dark: #cfd2d8;
   --accent-glow: rgba(255, 255, 255, 0.45);
   --steel: #8a8f98;
-  --line: rgba(242, 232, 213, 0.14);
+  --line: rgba(255, 255, 255, 0.14);
 
-  --pearl: #f8f6f1;
-  --pearl-deep: #eeebe2;
+  --pearl: #fafbfc;
+  --pearl-deep: #eff1f4;
 
   --font-display: "Bebas Neue", "Oswald", sans-serif;
   --font-script: "Alex Brush", cursive;
@@ -121,37 +121,6 @@ h1, h2, h3, h4 {
   letter-spacing: 0.08em;
   font-weight: 600;
   opacity: 0.8;
-}
-
-/* ---------- marquee ---------- */
-.marquee {
-  background: var(--accent);
-  color: var(--black);
-  overflow: hidden;
-  white-space: nowrap;
-  border-top: 1px solid var(--black);
-  border-bottom: 1px solid var(--black);
-}
-.marquee__track {
-  display: inline-flex;
-  animation: marquee 26s linear infinite;
-}
-.marquee__track span {
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  letter-spacing: 0.12em;
-  padding: 10px 0;
-}
-.marquee__track span::after {
-  content: "\2726";
-  margin: 0 28px;
-  font-size: 0.8rem;
-}
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
 }
 
 .sr-only {
@@ -268,14 +237,14 @@ h1, h2, h3, h4 {
   padding: 0 42px 0 16px;
   border-radius: 999px;
   border: 1px solid var(--line);
-  background: rgba(242, 232, 213, 0.06);
+  background: rgba(255, 255, 255, 0.06);
   color: var(--cream);
   font: inherit;
   font-size: 0.85rem;
 }
 .search input::placeholder { color: var(--steel); }
 .search input::-webkit-search-cancel-button { display: none; }
-.search input:focus { outline: none; border-color: var(--accent); background: rgba(242, 232, 213, 0.1); }
+.search input:focus { outline: none; border-color: var(--accent); background: rgba(255, 255, 255, 0.1); }
 .search__go {
   position: absolute;
   right: 4px; top: 50%;
@@ -313,7 +282,7 @@ h1, h2, h3, h4 {
   font-size: 0.88rem;
   cursor: pointer;
 }
-.search-results button:hover, .search-results button:focus-visible { background: rgba(242, 232, 213, 0.08); outline: none; }
+.search-results button:hover, .search-results button:focus-visible { background: rgba(255, 255, 255, 0.08); outline: none; }
 .search-results small {
   flex-shrink: 0;
   align-self: center;
@@ -384,49 +353,35 @@ h1, h2, h3, h4 {
 }
 
 /* ---------- hero ---------- */
-/* Full-width banner. Colors come from the --hero-* variables so the same markup
-   works as a light banner (default) or over a lifestyle photo (.hero--photo). */
+/* Giant full-bleed banner (edge to edge, like a retail promo banner): the image area fills the
+   whole section and the copy is overlaid on it. Colors come from the --hero-* variables so the
+   same markup works over the light placeholder (default) or a lifestyle photo (.hero--photo). */
 .hero {
   --hero-ink: var(--black);
-  --hero-muted: #55524b;
+  --hero-muted: #4a4f57;
   --hero-em: #6a6f78;
   --hero-line: rgba(11, 10, 8, 0.22);
-  --hero-grid: rgba(11, 10, 8, 0.05);
   --hero-glow: rgba(11, 10, 8, 0.12);
   --hero-btn-bg: var(--black);
   --hero-btn-fg: var(--white);
 
   position: relative;
   width: 100%;
-  min-height: min(88vh, 860px);
+  min-height: min(92vh, 920px);
   display: flex;
   align-items: center;
-  padding: 80px 0;
+  padding: 96px 0;
   color: var(--hero-ink);
-  background:
-    radial-gradient(55% 70% at 78% 45%, #ffffff, transparent 70%),
-    linear-gradient(180deg, #fbf7ee, #ece5d4);
+  background: linear-gradient(180deg, #ffffff, var(--pearl-deep));
   overflow: hidden;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--hero-grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(circle at 70% 30%, black, transparent 70%);
-  pointer-events: none;
 }
 
 /* Photo variant: <section class="hero hero--photo" style="--hero-image:url(assets/images/hero.jpg)"> */
 .hero--photo {
   --hero-ink: var(--white);
-  --hero-muted: #d8d2c4;
+  --hero-muted: #dcdfe4;
   --hero-em: #ffffff;
-  --hero-line: rgba(242, 232, 213, 0.35);
-  --hero-grid: transparent;
+  --hero-line: rgba(255, 255, 255, 0.35);
   --hero-btn-bg: var(--white);
   --hero-btn-fg: var(--black);
   background:
@@ -436,15 +391,16 @@ h1, h2, h3, h4 {
 }
 .hero .wrap {
   position: relative;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 40px;
-  align-items: center;
+  z-index: 1;
+  max-width: none;
+  width: 100%;
+  padding-left: clamp(24px, 6vw, 112px);
+  padding-right: clamp(24px, 6vw, 112px);
 }
-.hero--photo .wrap { grid-template-columns: 1fr; }
 .hero--photo .hero-media { display: none; }
+.hero-copy { max-width: 680px; }
 .hero-copy h1 {
-  font-size: clamp(3rem, 6.5vw, 5.6rem);
+  font-size: clamp(3.4rem, 8vw, 7rem);
   color: var(--hero-ink);
 }
 .hero-copy h1 em {
@@ -498,19 +454,20 @@ h1, h2, h3, h4 {
   color: var(--hero-muted);
 }
 
-/* ---------- hero picture placeholder ---------- */
-.hero-media { display: flex; align-items: center; justify-content: center; }
+/* ---------- hero banner image area (placeholder until real imagery exists) ---------- */
+.hero-media { position: absolute; inset: 0; }
 .hero-placeholder {
-  width: min(420px, 90%);
-  aspect-ratio: 4 / 5;
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 16px;
-  border: 2px dashed var(--hero-line);
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.55);
+  padding-left: 52%;               /* keeps the label clear of the overlaid copy */
+  background:
+    radial-gradient(60% 80% at 76% 50%, #ffffff, transparent 70%),
+    repeating-linear-gradient(135deg, rgba(11, 10, 8, 0.035) 0 2px, transparent 2px 22px);
   color: var(--hero-muted);
 }
 .hero-placeholder svg { width: 56px; height: 56px; }
@@ -752,7 +709,7 @@ section { position: relative; padding: 120px 0; }
 .cta-band .btn-ghost:hover { border-color: var(--black); }
 
 /* ---------- footer ---------- */
-.site-footer { padding: 70px 0 30px; }
+.site-footer { padding: 70px 0 30px; background: var(--black); }
 .footer-top {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
@@ -853,17 +810,17 @@ section { position: relative; padding: 120px 0; }
 body.is-policy-open { overflow: hidden; }
 
 /* ---------- pearl theme ----------
-   Everything below the hero banner, through the footer, carries the .pearl class.
+   Everything below the hero banner, down to (but not including) the black footer, carries the .pearl class.
    Instead of rewriting each component, .pearl re-maps the dark-theme color tokens
    (white = strong text, cream = body text, near-black = card surface, ...), so the shared
    rules (cards, FAQ, footer, buttons...) render dark-on-light. To put a section back on
    black, just remove "pearl" from its class list. */
 .pearl {
   --white: #14120f;
-  --cream: #2b2823;
-  --steel: #5e5a52;
+  --cream: #2a2d32;
+  --steel: #5a5f66;
   --near-black: #ffffff;
-  --charcoal: #ece8de;
+  --charcoal: #eceef1;
   --accent: #14120f;
   --accent-dark: #3a362f;
   --accent-glow: rgba(20, 18, 15, 0.22);
@@ -873,11 +830,10 @@ body.is-policy-open { overflow: hidden; }
 }
 .pearl .btn-primary { color: var(--pearl); }          /* accent is dark here, so flip the label */
 .pearl.about { background: #ffffff; }                 /* gentle alternation for rhythm */
-.pearl.marquee { background: var(--pearl-deep); color: var(--white); border-color: var(--line); }
 .pearl.cta-band { background: var(--pearl-deep); border-top: 1px solid var(--line); }
 .pearl.cta-band .btn-primary:hover { background: #2a2723; }
 .pearl .product-card { box-shadow: 0 1px 2px rgba(20, 18, 15, 0.04), 0 14px 30px -20px rgba(20, 18, 15, 0.3); }
-.pearl .product-card__media { background: radial-gradient(70% 70% at 50% 40%, #ffffff, #ece8de 85%); }
+.pearl .product-card__media { background: radial-gradient(70% 70% at 50% 40%, #ffffff, #eceef1 85%); }
 .pearl .pill { background: rgba(255, 255, 255, 0.92); color: var(--white); border-color: var(--line); }
 .pearl .product-card--featured .pill { background: var(--white); color: var(--pearl); border-color: var(--white); }
 
@@ -887,9 +843,8 @@ body.is-policy-open { overflow: hidden; }
 }
 
 @media (max-width: 980px) {
-  .hero .wrap { grid-template-columns: 1fr; }
-  .hero-media { order: -1; }
-  .hero-placeholder { width: 100%; aspect-ratio: 16 / 10; }
+  .hero { min-height: 0; padding: 72px 0 150px; }
+  .hero-placeholder { padding-left: 0; justify-content: flex-end; padding-bottom: 36px; }
   .search { width: 180px; }
   .lineup-grid { grid-template-columns: repeat(2, 1fr); }
   .video-grid { grid-template-columns: 1fr; }

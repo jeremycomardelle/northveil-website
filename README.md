@@ -16,13 +16,13 @@ Then open the printed `localhost` URL. (Opening `index.html` directly via `file:
 
 The site currently ships with placeholder/illustrated graphics since no product photography exists yet. Everything is built to be swapped in easily:
 
-- **Product photos** — drop images into `assets/images/`. The hero currently shows a "Picture coming soon" placeholder (`.hero-placeholder` in `index.html`); replace it with an `<img>` once photography is ready.
+- **Product photos** — drop images into `assets/images/`. The hero currently shows a "Banner image coming soon" placeholder (`.hero-placeholder` in `index.html`); see "Hero banner" below to swap in a photo.
 - **Videos** — edit `js/videos.js`. Add an entry to the `NORTHVEIL_VIDEOS` array for each video (YouTube ID or a self-hosted file dropped into `assets/videos/`). Leave it empty and the site automatically shows "coming soon" placeholder cards.
 - **Amazon store link** — once the Amazon storefront is live, set `AMAZON_STORE_URL` at the top of `js/main.js`. Every "Shop on Amazon" button re-enables automatically.
 - **Social links** — update the Instagram/YouTube/Facebook/LinkedIn URLs in the footer and the "Get Notified" section of `index.html`.
 - **Deals banner** — the slim bar above the header is the `.deal-bar` block at the top of `index.html`. Edit its text and link whenever there's a promotion; delete the block to remove it.
-- **Hero banner** — full-width and light by default, with a "Picture coming soon" placeholder on the right. For a full-bleed lifestyle photo instead (e.g. someone outside wearing the DMP), drop it in `assets/images/` and change the hero to `<section class="hero hero--photo" style="--hero-image:url(assets/images/hero.jpg)">`. Text and buttons switch to light-on-dark automatically and the placeholder is hidden.
-- **Pearl white theme** — every section below the hero, through the footer, has the `pearl` class (see "pearl theme" in `css/style.css`). Remove that class from any section to put it back on black.
+- **Hero banner** — a giant full-bleed banner with the headline overlaid, light by default with a "Banner image coming soon" placeholder filling the image area. For a lifestyle photo instead (e.g. someone outside wearing the DMP), drop it in `assets/images/` and change the hero to `<section class="hero hero--photo" style="--hero-image:url(assets/images/hero.jpg)">`. Text and buttons switch to light-on-dark automatically and the placeholder is hidden.
+- **Pearl white theme** — every section below the hero, down to the footer, has the `pearl` class (see "pearl theme" in `css/style.css`). Remove that class from any section to put it back on black. The footer is black.
 - **Shop by Product lineup** — the cards in `#lineup`. Swap each card's icon for a product photo when photography exists, and update the status pill (e.g. "Coming soon" → "Available now").
 - **Header search / account** — search is a client-side index of the lineup cards, sections and FAQs (built in `js/main.js`, nothing to configure; new FAQ items are picked up automatically). The account icon opens a menu pointing to Amazon orders and warranty support because the site has no accounts.
 - **Company phone number** — a commented-out `tel:` line sits in the footer's Contact column; uncomment it and fill in the number.

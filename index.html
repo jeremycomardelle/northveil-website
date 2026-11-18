@@ -82,11 +82,18 @@
 
 <main id="top">
 
-  <!-- HERO — full-width banner. Light by default, with a "Picture coming soon" placeholder
-       (.hero-placeholder) until real imagery exists.
-       For a lifestyle photo instead, add class "hero--photo" and set
+  <!-- HERO — giant full-bleed banner with the copy overlaid. Shows a "Banner image coming soon"
+       placeholder (.hero-placeholder) until real imagery exists.
+       To use a photo, add class "hero--photo" and set
        style="--hero-image:url(assets/images/hero.jpg)" on this element (see README). -->
   <section class="hero">
+    <div class="hero-media">
+      <div class="hero-placeholder" role="img" aria-label="Banner image coming soon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="8.5" cy="10" r="1.6"/><path d="m21 16-5-5-8 8"/></svg>
+        <span>Banner image coming soon</span>
+      </div>
+    </div>
+
     <div class="wrap">
       <div class="hero-copy reveal">
         <p class="eyebrow">Introducing the Wildcat</p>
@@ -112,13 +119,6 @@
             <strong>0</strong>
             <span>Bloatware, ever</span>
           </div>
-        </div>
-      </div>
-
-      <div class="hero-media reveal">
-        <div class="hero-placeholder" role="img" aria-label="Product picture coming soon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="8.5" cy="10" r="1.6"/><path d="m21 16-5-5-8 8"/></svg>
-          <span>Picture coming soon</span>
         </div>
       </div>
     </div>
@@ -203,20 +203,6 @@
       </div>
     </div>
   </section>
-
-  <!-- BRAND MARQUEE -->
-  <div class="marquee pearl">
-    <div class="marquee__track" id="marqueeTrack">
-      <span>Escape the rat race. Be a Wildcat.</span>
-      <span>Where buying = owning.</span>
-      <span>No distractions.</span>
-      <span>Coming soon to Amazon.</span>
-      <span>Escape the rat race. Be a Wildcat.</span>
-      <span>Where buying = owning.</span>
-      <span>No distractions.</span>
-      <span>Coming soon to Amazon.</span>
-    </div>
-  </div>
 
   <!-- TRUST BAR -->
   <section class="trust-bar pearl" style="padding-top:28px; padding-bottom:28px;">
@@ -343,7 +329,7 @@
 
 </main>
 
-<footer class="site-footer pearl">
+<footer class="site-footer">
   <div class="wrap">
     <div class="footer-top">
       <div>
