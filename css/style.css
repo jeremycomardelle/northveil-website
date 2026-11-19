@@ -180,13 +180,8 @@ h1, h2, h3, h4 {
   gap: 24px;
 }
 
-.logo {
-  font-family: var(--font-script);
-  font-size: 2rem;
-  color: var(--white);
-  letter-spacing: 0.02em;
-}
-.logo span { color: var(--accent); }
+.logo { display: block; line-height: 0; }
+.logo img { height: 40px; width: auto; max-width: none; }
 
 .nav-links {
   display: flex;
@@ -718,6 +713,7 @@ section { position: relative; padding: 120px 0; }
   border-bottom: 1px solid var(--line);
 }
 .footer-top .logo { margin-bottom: 14px; }
+.footer-top .logo img { height: 56px; }
 .footer-top p { color: var(--steel); font-size: 0.92rem; max-width: 280px; }
 .footer-col h5 {
   font-size: 0.75rem;
