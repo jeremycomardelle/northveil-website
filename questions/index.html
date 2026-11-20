@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQs — Northveil Technologies</title>
+<meta name="description" content="Answers about the Wildcat digital music player: where to buy it, supported audio formats, Bluetooth, colors, accessories, and shipping.">
+
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/images/favicon-512.png">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Alex+Brush&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- DEALS BANNER — a scrolling holiday ticker. Edit the items in .deal-bar__set; js/main.js repeats the set
+     to fill the bar and scrolls it to the left (it stays a static, centered line with reduced-motion on).
+     Delete the whole block to remove the banner. -->
+<div class="deal-bar" id="dealBar" role="region" aria-label="Current deals">
+  <div class="deal-bar__track" id="dealTrack">
+    <p class="deal-bar__set">
+      <strong>Launch season</strong>
+      <span class="deal-bar__sep" aria-hidden="true">&#10022;</span>
+      <span>Deals drop with the Wildcat</span>
+      <span class="deal-bar__sep" aria-hidden="true">&#10022;</span>
+      <a href="/#notify">Get notified &rarr;</a>
+      <span class="deal-bar__sep" aria-hidden="true">&#10022;</span>
+      <span>Escape the Rat Race</span>
+      <span class="deal-bar__sep" aria-hidden="true">&#10022;</span>
+      <span>Be a Wildcat</span>
+      <span class="deal-bar__sep" aria-hidden="true">&#10022;</span>
+      <span>Fulfill Your Potential</span>
+      <span class="deal-bar__sep" aria-hidden="true">&#10022;</span>
+    </p>
+  </div>
+</div>
+
+<header class="site-header" id="siteHeader">
+  <div class="wrap">
+    <a href="/#top" class="logo" aria-label="Northveil home"><img src="/assets/images/northveil-logo-white.png" alt="Northveil" width="1337" height="394"></a>
+
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="navLinks">
+        <li class="has-dropdown">
+          <a href="/#lineup">Shop by Product <svg class="nav-caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2.5 4.5 3.5 3.5 3.5-3.5"/></svg></a>
+          <div class="nav-dropdown">
+            <ul>
+              <li><a href="/checkout?product=dmp">DMP</a></li>
+              <li><a href="/checkout?product=armband">Armband</a></li>
+              <li><a href="/checkout?product=headphones">Headphones</a></li>
+              <li><a href="/checkout?product=cases">Cases</a></li>
+              <li><a href="/checkout?product=clothes">Clothes</a></li>
+              <li><a href="/checkout?product=bundles">Bundle Deals</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="/questions">FAQs</a></li>
+        <li><a href="/about-us">About Us</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-right">
+      <div class="header-tools">
+        <form class="search" id="siteSearch" role="search" autocomplete="off">
+          <label class="sr-only" for="searchInput">Search Northveil</label>
+          <input type="search" id="searchInput" placeholder="Search" aria-controls="searchResults">
+          <button type="submit" class="search__go" aria-label="Search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          </button>
+          <div class="search-results" id="searchResults" hidden></div>
+        </form>
+
+        <button type="button" class="icon-btn search-toggle" id="searchToggle" aria-label="Open search" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </button>
+
+        <div class="account">
+          <button type="button" class="icon-btn" id="accountBtn" aria-label="Account" aria-haspopup="true" aria-expanded="false" aria-controls="accountMenu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </button>
+          <div class="account-menu" id="accountMenu" hidden>
+            <p class="account-menu__title">Orders &amp; support</p>
+            <p class="account-menu__note">This site has no accounts &mdash; orders are placed and tracked on Amazon.</p>
+            <a href="https://www.amazon.com/gp/css/order-history" target="_blank" rel="noopener">Your Amazon orders</a>
+            <a href="/#warranty-policy" data-policy-link="warranty">Warranty claims</a>
+            <a href="/#notify">Get notified at launch</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-cta">
+        <a href="#" class="btn btn-primary is-disabled" id="amazonBtnHeader" aria-disabled="true">Coming Soon</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- FAQ -->
+  <section id="faq" class="pearl">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Questions</p>
+        <h1>Good to know.</h1>
+      </div>
+
+      <div class="faq-list reveal" id="faqList">
+        <div class="faq-item">
+          <button class="faq-q">Where can I buy the Wildcat?
+            <span class="plus"></span>
+          </button>
+          <div class="faq-a"><p>The Wildcat will be available through our Amazon store. It isn't live yet &mdash; join the notify list or follow us on social to be first in line when it drops.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What audio formats does the Wildcat support?
+            <span class="plus"></span>
+          </button>
+          <div class="faq-a"><p>MP3, M4A, WAV, FLAC, and other common formats &mdash; just drag your existing library over.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Does it have Bluetooth?
+            <span class="plus"></span>
+          </button>
+          <div class="faq-a"><p>Yes &mdash; Bluetooth 5.3+ for wireless headphones and speakers, plus a standard 3.5mm jack if you'd rather plug in.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Why doesn't the Wildcat have an FM radio or microphone?
+            <span class="plus"></span>
+          </button>
+          <div class="faq-a"><p>We build in what people actually use, and leave out what just takes up space. The Wildcat is built to play your music &mdash; not to be a half-featured version of your phone.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What colors is it available in?
+            <span class="plus"></span>
+          </button>
+          <div class="faq-a"><p>Steel ships as our core finish, alongside limited-edition Americana, Dark Camo, and White Camo colorways.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is there an armband or case?
+            <span class="plus"></span>
+          </button>
+          <div class="faq-a"><p>A running/biking arm band and holster are in development, alongside cases, screen protectors, and chargers. Follow along on social for drops.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">When does the Wildcat ship?
+            <span class="plus"></span>
+          </button>
+          <div class="faq-a"><p>We're targeting this holiday season. Follow @northveiltech or join the notify list and you'll be the first to know the exact date.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="/#top" class="logo" aria-label="Northveil home"><img src="/assets/images/northveil-logo-white.png" alt="Northveil" width="1337" height="394"></a>
+        <div class="social-row">
+          <a href="https://instagram.com/northveiltech" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+          <a href="https://youtube.com/@northveiltech" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="m10 9 5 3-5 3Z"/></svg>
+          </a>
+          <a href="https://facebook.com/northveiltech" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9h3V6h-3a3 3 0 0 0-3 3v2H8v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1Z"/></svg>
+          </a>
+          <a href="https://linkedin.com/company/northveiltech" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 13v4"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="/#lineup">Shop by Product</a></li>
+          <li><a href="/#videos">Videos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="/about-us">About Us</a></li>
+          <li><a href="/questions">FAQs</a></li>
+          <li><a href="/#notify">Get Notified</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:Northveiltechnologies@gmail.com">Northveiltechnologies@gmail.com</a></li>
+          <!-- Company phone number: uncomment and fill in once there's one to publish.
+          <li><a href="tel:+10000000000">(000) 000-0000</a></li> -->
+          <li><a href="#" class="is-disabled" aria-disabled="true">Amazon Store (soon)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Northveil Technologies. All rights reserved.</span>
+      <nav class="footer-legal" aria-label="Policies">
+        <a href="/#warranty-policy" data-policy-link="warranty">Warranty</a>
+        <a href="/#privacy-policy" data-policy-link="privacy">Privacy</a>
+        <a href="/#returns-policy" data-policy-link="returns">Returns &amp; Shipping</a>
+      </nav>
+      <span>Wildcat&trade; is a product of Northveil Technologies.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/products.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

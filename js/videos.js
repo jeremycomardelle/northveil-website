@@ -14,11 +14,10 @@
  */
 const NORTHVEIL_VIDEOS = [
   // { title: "Wildcat Unboxing", type: "youtube", id: "" },
-  // { title: "Meet the Founder", type: "youtube", id: "" },
   // { title: "Wildcat in Action", type: "youtube", id: "" },
 ];
 
-const NORTHVEIL_VIDEO_PLACEHOLDER_COUNT = 3;
+const NORTHVEIL_VIDEO_PLACEHOLDER_COUNT = 2;
 
 function renderNorthveilVideos() {
   const grid = document.getElementById("videoGrid");

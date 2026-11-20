@@ -6,8 +6,71 @@
  */
 const AMAZON_STORE_URL = ""; // e.g. "https://www.amazon.com/shops/northveiltech"
 
+/**
+ * Deals banner: repeats the items in .deal-bar__set until they fill the bar twice over, then scrolls
+ * them to the left in a seamless loop (CSS does the animation; see .deal-bar.is-marquee).
+ * Skipped when the visitor prefers reduced motion, leaving a static, centered line.
+ */
+function initDealBar() {
+  const bar = document.getElementById("dealBar");
+  const track = document.getElementById("dealTrack");
+  const original = track && track.querySelector(".deal-bar__set");
+  if (!bar || !original) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const PIXELS_PER_SECOND = 55;
+  const template = original.cloneNode(true);
+  let lastWidth = 0;
+
+  const hide = (el) => {
+    el.setAttribute("aria-hidden", "true");
+    el.querySelectorAll("a").forEach((a) => a.setAttribute("tabindex", "-1"));
+  };
+
+  const build = () => {
+    lastWidth = bar.clientWidth;
+    bar.classList.add("is-marquee");
+    track.replaceChildren();
+
+    const probeGroup = document.createElement("div");
+    probeGroup.className = "deal-bar__group";
+    probeGroup.append(template.cloneNode(true));
+    track.append(probeGroup);
+
+    const setWidth = probeGroup.getBoundingClientRect().width;
+    if (!setWidth) return;
+    const copies = Math.max(1, Math.ceil(bar.clientWidth / setWidth));
+
+    for (let i = 1; i < copies; i++) {
+      const extra = template.cloneNode(true);
+      hide(extra);
+      probeGroup.append(extra);
+    }
+    const mirror = probeGroup.cloneNode(true);
+    hide(mirror);
+    track.append(mirror);
+
+    bar.style.setProperty("--deal-duration", `${Math.round((setWidth * copies) / PIXELS_PER_SECOND)}s`);
+  };
+
+  const start = () => {
+    build();
+    let timer;
+    window.addEventListener("resize", () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => bar.clientWidth !== lastWidth && build(), 200);
+    });
+  };
+
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(start);
+  else start();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("year").textContent = new Date().getFullYear();
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  initDealBar();
 
   // Wire up Amazon CTAs once a URL is set.
   if (AMAZON_STORE_URL) {
@@ -84,18 +147,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchResults = document.getElementById("searchResults");
   const searchToggle = document.getElementById("searchToggle");
 
+  // Every entry has an href. If its target is on the page you're already on (`el`), search scrolls to it;
+  // otherwise it navigates. FAQ entries only exist on /questions, where the questions live.
   const sectionEntries = [
-    { label: "Videos", id: "videos", terms: "watch walkthrough" },
-    { label: "About Us", id: "about", terms: "who northveil company mission represent" },
-    { label: "Get notified", id: "notify", terms: "launch instagram follow amazon" },
-  ].map((s) => ({ label: s.label, group: "Section", el: document.getElementById(s.id), terms: s.terms }));
+    { label: "Videos", id: "videos", href: "/#videos", terms: "watch walkthrough" },
+    { label: "About Us", id: "about", href: "/about-us", terms: "who northveil company mission represent" },
+    { label: "FAQs", id: "faq", href: "/questions", terms: "questions help formats bluetooth colors ship shipping armband" },
+    { label: "Get notified", id: "notify", href: "/#notify", terms: "launch instagram follow amazon" },
+  ].map((s) => ({ label: s.label, group: "Section", el: document.getElementById(s.id), href: s.href, terms: s.terms }));
 
   const searchIndex = [
-    ...Array.from(document.querySelectorAll(".product-card")).map((el) => ({
-      label: el.querySelector("h3").textContent.trim(),
+    ...(typeof NORTHVEIL_PRODUCTS === "undefined" ? [] : NORTHVEIL_PRODUCTS).map((p) => ({
+      label: p.name,
       group: "Product",
-      el,
-      terms: (el.dataset.terms || "") + " " + el.querySelector("p").textContent,
+      el: document.querySelector(`.product-card[data-product="${p.id}"]`),
+      href: northveilCheckoutUrl(p.id),
+      terms: `${p.tile} ${p.terms} ${p.description}`,
     })),
     ...sectionEntries,
     ...Array.from(document.querySelectorAll(".faq-item")).map((el) => ({
@@ -104,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
       el,
       terms: el.querySelector(".faq-a").textContent,
     })),
-  ].filter((entry) => entry.el);
+  ];
 
   const closeSearchResults = () => {
     searchResults.hidden = true;
@@ -118,6 +185,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.innerWidth <= 720) {
       searchForm.classList.remove("is-open");
       searchToggle.setAttribute("aria-expanded", "false");
+    }
+    if (!entry.el) {
+      location.href = entry.href;
+      return;
     }
     if (entry.group === "FAQ") {
       document.querySelectorAll(".faq-item.is-open").forEach((i) => i !== entry.el && i.classList.remove("is-open"));
@@ -217,7 +288,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Policy overlay. Links use data-policy-link="<key>"; #<key>-policy deep links open it on load.
+  // Only the home page carries the overlay. On other pages the policy links ("/#warranty-policy", ...)
+  // are plain links that take you to the home page, which opens it from the hash.
   const policyDialog = document.getElementById("policyDialog");
+  if (!policyDialog) return;
   const policyTitle = document.getElementById("policyDialogTitle");
   const policyBody = policyDialog.querySelector(".policy-dialog__body");
   const policies = policyDialog.querySelectorAll("[data-policy]");

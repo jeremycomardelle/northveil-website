@@ -134,29 +134,53 @@ h1, h2, h3, h4 {
 }
 
 /* ---------- deals banner ---------- */
+/* Holiday ticker: dark Christmas green, scrolling to the left. js/main.js adds .is-marquee and repeats the
+   items to fill the bar; without JS (or with reduced motion) it's a static, centered, wrapping line. */
 .deal-bar {
-  background: var(--charcoal);
-  border-bottom: 1px solid var(--line);
-  padding: 9px 16px;
-  text-align: center;
-}
-.deal-bar p {
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 2px 14px;
+  --deal-green: #124d2b;
+  background: var(--deal-green);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 9px 0;
+  overflow: hidden;
   font-family: var(--font-display);
   font-size: 0.95rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--cream);
 }
+.deal-bar__track { display: flex; justify-content: center; }
+.deal-bar__set {
+  margin: 0;
+  padding: 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2px 14px;
+}
 .deal-bar strong { font-weight: 400; color: var(--white); }
-.deal-bar__sep { color: var(--steel); font-size: 0.75rem; }
+.deal-bar__sep { color: #e6cf8a; font-size: 0.75rem; }
 .deal-bar a { color: var(--white); border-bottom: 1px solid currentColor; }
 .deal-bar a:hover { opacity: 0.8; }
+
+.deal-bar.is-marquee .deal-bar__track {
+  justify-content: flex-start;
+  width: max-content;
+  animation: dealScroll var(--deal-duration, 40s) linear infinite;
+}
+.deal-bar.is-marquee .deal-bar__group { display: flex; flex-shrink: 0; }
+.deal-bar.is-marquee .deal-bar__set {
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  padding: 0 14px 0 0;
+}
+.deal-bar.is-marquee:hover .deal-bar__track,
+.deal-bar.is-marquee:focus-within .deal-bar__track { animation-play-state: paused; }
+@keyframes dealScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 
 /* ---------- header ---------- */
 .site-header {
@@ -211,6 +235,35 @@ h1, h2, h3, h4 {
 }
 .nav-links a:hover { opacity: 1; }
 .nav-links a:hover::after { width: 100%; }
+
+/* "Shop by Product" dropdown — opens on hover and on keyboard focus. The panel's transparent
+   padding-top bridges the gap so the pointer can travel from the link into the list. */
+.nav-links > li { position: relative; }
+.has-dropdown > a { display: inline-flex; align-items: center; gap: 6px; }
+.nav-caret { width: 10px; height: 10px; transition: transform 0.2s ease; }
+.has-dropdown:hover .nav-caret, .has-dropdown:focus-within .nav-caret { transform: rotate(180deg); }
+.nav-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -18px;
+  min-width: 200px;
+  padding-top: 16px;
+  z-index: 130;
+}
+.nav-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  background: rgba(20, 18, 16, 0.98);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.8);
+}
+.nav-dropdown a { display: block; padding: 10px 12px; border-radius: 9px; opacity: 1; }
+.nav-dropdown a::after { display: none; }
+.nav-dropdown a:hover, .nav-dropdown a:focus-visible { background: rgba(255, 255, 255, 0.1); color: var(--white); outline: none; }
+.has-dropdown:hover > .nav-dropdown, .has-dropdown:focus-within > .nav-dropdown { display: block; }
 
 /* Desktop: header spans the full width, with the logo and nav tucked to the left. */
 @media (min-width: 721px) {
@@ -348,108 +401,24 @@ h1, h2, h3, h4 {
 }
 
 /* ---------- hero ---------- */
-/* Giant full-bleed banner (edge to edge, like a retail promo banner): the image area fills the
-   whole section and the copy is overlaid on it. Colors come from the --hero-* variables so the
-   same markup works over the light placeholder (default) or a lifestyle photo (.hero--photo). */
+/* A short, full-bleed banner (edge to edge, like a retail promo banner) — short on purpose so the
+   "Northveil lineup" title is already on screen when the page opens. It shows a placeholder until real
+   imagery exists; for a photo use <section class="hero hero--photo" style="--hero-image:url(...)">. */
 .hero {
-  --hero-ink: var(--black);
   --hero-muted: #4a4f57;
-  --hero-em: #6a6f78;
-  --hero-line: rgba(11, 10, 8, 0.22);
-  --hero-glow: rgba(11, 10, 8, 0.12);
-  --hero-btn-bg: var(--black);
-  --hero-btn-fg: var(--white);
 
   position: relative;
   width: 100%;
-  min-height: min(92vh, 920px);
-  display: flex;
-  align-items: center;
-  padding: 96px 0;
-  color: var(--hero-ink);
+  height: clamp(150px, 24vh, 260px);
+  padding: 0;
   background: linear-gradient(180deg, #ffffff, var(--pearl-deep));
   overflow: hidden;
 }
-
-/* Photo variant: <section class="hero hero--photo" style="--hero-image:url(assets/images/hero.jpg)"> */
 .hero--photo {
-  --hero-ink: var(--white);
-  --hero-muted: #dcdfe4;
-  --hero-em: #ffffff;
-  --hero-line: rgba(255, 255, 255, 0.35);
-  --hero-btn-bg: var(--white);
-  --hero-btn-fg: var(--black);
-  background:
-    linear-gradient(90deg, rgba(11, 10, 8, 0.82) 0%, rgba(11, 10, 8, 0.45) 55%, rgba(11, 10, 8, 0.15) 100%),
-    var(--hero-image, none) center / cover no-repeat,
-    var(--black);
-}
-.hero .wrap {
-  position: relative;
-  z-index: 1;
-  max-width: none;
-  width: 100%;
-  padding-left: clamp(24px, 6vw, 112px);
-  padding-right: clamp(24px, 6vw, 112px);
+  background: var(--hero-image, none) center / cover no-repeat, var(--black);
 }
 .hero--photo .hero-media { display: none; }
-.hero-copy { max-width: 680px; }
-.hero-copy h1 {
-  font-size: clamp(3.4rem, 8vw, 7rem);
-  color: var(--hero-ink);
-}
-.hero-copy h1 em {
-  font-style: normal;
-  color: var(--hero-em);
-}
-.hero-copy .hero-tagline {
-  margin: 22px 0 36px;
-  font-family: var(--font-display);
-  letter-spacing: 0.03em;
-  font-size: 1.35rem;
-  color: var(--hero-ink);
-}
-.hero-copy p {
-  margin: 14px 0 36px;
-  max-width: 480px;
-  font-size: 1.12rem;
-  color: var(--hero-muted);
-}
-.hero .eyebrow::before { background: var(--hero-ink); }
-.hero .btn-primary {
-  background: var(--hero-btn-bg);
-  color: var(--hero-btn-fg);
-  box-shadow: 0 8px 24px -10px var(--hero-glow);
-}
-.hero .btn-primary:hover { box-shadow: 0 14px 32px -10px rgba(11, 10, 8, 0.4); }
-.hero .btn-ghost { border-color: var(--hero-line); color: var(--hero-ink); }
-.hero .btn-ghost:hover { border-color: var(--hero-ink); color: var(--hero-ink); }
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  align-items: center;
-}
-.hero-stats {
-  display: flex;
-  gap: 36px;
-  margin-top: 56px;
-  flex-wrap: wrap;
-}
-.hero-stats div strong {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 2.1rem;
-  color: var(--hero-ink);
-}
-.hero-stats div span {
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--hero-muted);
-}
 
-/* ---------- hero banner image area (placeholder until real imagery exists) ---------- */
 .hero-media { position: absolute; inset: 0; }
 .hero-placeholder {
   position: absolute;
@@ -458,19 +427,25 @@ h1, h2, h3, h4 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  padding-left: 52%;               /* keeps the label clear of the overlaid copy */
+  gap: 8px;
   background:
-    radial-gradient(60% 80% at 76% 50%, #ffffff, transparent 70%),
+    radial-gradient(60% 90% at 50% 50%, #ffffff, transparent 70%),
     repeating-linear-gradient(135deg, rgba(11, 10, 8, 0.035) 0 2px, transparent 2px 22px);
   color: var(--hero-muted);
 }
-.hero-placeholder svg { width: 56px; height: 56px; }
+.hero-placeholder svg { width: 40px; height: 40px; }
 .hero-placeholder span {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
 }
 
 /* ---------- section shell ---------- */
@@ -479,7 +454,7 @@ section { position: relative; padding: 120px 0; }
   max-width: 620px;
   margin-bottom: 56px;
 }
-.section-head h2 {
+.section-head h1, .section-head h2 {
   font-size: clamp(2.2rem, 4.5vw, 3.2rem);
   color: var(--white);
   margin-top: 14px;
@@ -499,88 +474,57 @@ section { position: relative; padding: 120px 0; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 /* ---------- shop by product ---------- */
-.lineup { padding-top: 100px; }
+/* Compact, clickable tiles — five across on a laptop. Each is a link to that product's checkout page. */
+.lineup { padding: 44px 0 72px; }
+.lineup .section-head { margin-bottom: 26px; }
 .lineup-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
 }
 .product-card {
   display: flex;
   flex-direction: column;
   background: var(--near-black);
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 14px;
   overflow: hidden;
+  color: inherit;
   transition: transform 0.25s ease, border-color 0.25s ease;
 }
-.product-card:hover { transform: translateY(-6px); border-color: var(--accent); }
+.product-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.product-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .product-card__media {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 5 / 3;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--cream);
   background: radial-gradient(70% 70% at 50% 40%, #2a2621, var(--charcoal) 70%, var(--near-black));
 }
-.product-card__media svg { width: 84px; height: 84px; }
+.product-card__media svg { width: 52px; height: 52px; }
 .product-card--featured .pill { background: var(--white); color: var(--black); border-color: var(--white); }
-.product-card__body { display: flex; flex-direction: column; flex: 1; padding: 20px 22px 24px; }
+.product-card__body { padding: 14px 16px 16px; }
 .product-card h3 {
   font-family: var(--font-body);
   text-transform: none;
   letter-spacing: 0;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--white);
 }
-.product-card p { margin: 8px 0 0; font-size: 0.92rem; color: var(--steel); }
-.product-card__link {
-  margin-top: auto;
-  padding-top: 16px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--white);
-}
-.product-card__link:hover { text-decoration: underline; text-underline-offset: 4px; }
-
-/* ---------- trust bar ---------- */
-.trust-bar {
-  padding: 28px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-.trust-bar .wrap {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px 64px;
-}
-.trust-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.8rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--steel);
-  font-weight: 600;
-}
-.trust-item svg { width: 20px; height: 20px; color: var(--accent); flex-shrink: 0; }
 
 /* ---------- pill labels ---------- */
 .pill {
   position: absolute;
-  top: 12px; left: 12px;
+  top: 10px; left: 10px;
   background: rgba(11,10,8,0.7);
   color: var(--cream);
-  font-size: 0.65rem;
+  font-size: 0.58rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 5px 10px;
+  padding: 4px 8px;
   border-radius: 999px;
   border: 1px solid var(--line);
 }
@@ -588,7 +532,7 @@ section { position: relative; padding: 120px 0; }
 /* ---------- video section ---------- */
 .video-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 .video-card {
@@ -632,7 +576,7 @@ section { position: relative; padding: 120px 0; }
 }
 .about p { color: var(--steel); font-size: 1.05rem; margin: 18px 0; }
 .about-inner { max-width: 720px; margin: 0 auto; text-align: center; }
-.about-inner > h2 { margin-top: 14px; font-size: clamp(2.2rem, 4.5vw, 3.2rem); color: var(--white); }
+.about-inner > h1, .about-inner > h2 { margin-top: 14px; font-size: clamp(2.2rem, 4.5vw, 3.2rem); color: var(--white); }
 .about-block { margin-top: 44px; }
 .about-block h3 { font-size: clamp(1.5rem, 3vw, 2rem); color: var(--white); }
 .about-quote {
@@ -805,6 +749,68 @@ section { position: relative; padding: 120px 0; }
 .policy-dialog__foot .btn { padding: 10px 26px; font-size: 0.95rem; }
 body.is-policy-open { overflow: hidden; }
 
+/* ---------- checkout ---------- */
+.checkout { padding: 70px 0 110px; }
+.checkout-title {
+  margin: 14px 0 34px;
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  color: var(--white);
+}
+.checkout-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+.checkout-card {
+  background: var(--near-black);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+}
+.checkout-form .checkout-card + .checkout-card { margin-top: 20px; }
+.checkout-card h2 { font-size: 1.5rem; color: var(--white); margin-bottom: 18px; }
+.field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.field--full { grid-column: 1 / -1; }
+.field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--steel);
+}
+.field input, .field select {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--white);
+  font: inherit;
+  font-size: 1rem;
+}
+.field input:focus, .field select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.checkout-summary .field { margin-bottom: 16px; }
+.checkout-note { margin: 0; color: var(--steel); font-size: 0.95rem; }
+.checkout-note a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
+.checkout-submit { margin-top: 22px; width: 100%; }
+.summary-product { margin: 0 0 18px; }
+.summary-product p { margin: 10px 0 0; color: var(--steel); font-size: 0.92rem; }
+.pill--inline { position: static; display: inline-block; }
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 13px 0;
+  border-top: 1px solid var(--line);
+  font-size: 0.95rem;
+  color: var(--cream);
+}
+.summary-line--total { font-weight: 700; font-size: 1.05rem; color: var(--white); }
+
 /* ---------- pearl theme ----------
    Everything below the hero banner, down to (but not including) the black footer, carries the .pearl class.
    Instead of rewriting each component, .pearl re-maps the dark-theme color tokens
@@ -839,20 +845,28 @@ body.is-policy-open { overflow: hidden; }
 }
 
 @media (max-width: 980px) {
-  .hero { min-height: 0; padding: 72px 0 150px; }
-  .hero-placeholder { padding-left: 0; justify-content: flex-end; padding-bottom: 36px; }
   .search { width: 180px; }
-  .lineup-grid { grid-template-columns: repeat(2, 1fr); }
   .video-grid { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr 1fr; }
+  .checkout-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 900px) {
+  .lineup-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 720px) {
   .nav-links, .header-cta { display: none; }
   .nav-toggle { display: block; }
   .site-header .wrap, .header-right { gap: 10px; }
-  .deal-bar p { font-size: 0.82rem; letter-spacing: 0.08em; }
-  .deal-bar__sep--end { display: none; }
+  .deal-bar { font-size: 0.82rem; letter-spacing: 0.08em; }
+
+  /* in the mobile flyout the product list is always open, indented under "Shop by Product" */
+  .nav-caret { display: none; }
+  .nav-dropdown { display: block; position: static; min-width: 0; padding: 8px 0 0 12px; }
+  .nav-dropdown ul { background: none; border: 0; box-shadow: none; padding: 0; }
+  .nav-dropdown a { padding: 6px 0; font-size: 0.76rem; opacity: 0.75; }
+  .nav-dropdown a:hover, .nav-dropdown a:focus-visible { background: none; }
 
   /* search collapses to an icon that drops a full-width bar under the header */
   .search-toggle { display: inline-flex; }
@@ -869,13 +883,13 @@ body.is-policy-open { overflow: hidden; }
   .search input { height: 42px; font-size: 16px; }
   .search__go { right: 30px; }
   .search-results { left: 24px; right: 24px; min-width: 0; }
-  .trust-bar .wrap { justify-content: center; gap: 16px 36px; }
   .footer-top { grid-template-columns: 1fr; }
   section { padding: 80px 0; }
 }
 
 @media (max-width: 560px) {
-  .lineup-grid { grid-template-columns: 1fr; }
+  .lineup-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .field-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {

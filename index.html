@@ -22,26 +22,49 @@
 </head>
 <body>
 
-<!-- DEALS BANNER — edit the text/link here whenever there's a promotion to announce -->
+<!-- DEALS BANNER — a scrolling holiday ticker. Edit the items in .deal-bar__set; js/main.js repeats the set
+     to fill the bar and scrolls it to the left (it stays a static, centered line with reduced-motion on).
+     Delete the whole block to remove the banner. -->
 <div class="deal-bar" id="dealBar" role="region" aria-label="Current deals">
-  <p>
-    <strong>Launch season</strong>
-    <span class="deal-bar__sep" aria-hidden="true">&#10022;</span>
-    <span>Deals drop with the Wildcat</span>
-    <span class="deal-bar__sep deal-bar__sep--end" aria-hidden="true">&#10022;</span>
-    <a href="#notify">Get notified &rarr;</a>
-  </p>
+  <div class="deal-bar__track" id="dealTrack">
+    <p class="deal-bar__set">
+      <strong>Launch season</strong>
+      <span class="deal-bar__sep" aria-hidden="true">&#10022;</span>
+      <span>Deals drop with the Wildcat</span>
+      <span class="deal-bar__sep" aria-hidden="true">&#10022;</span>
+      <a href="/#notify">Get notified &rarr;</a>
+      <span class="deal-bar__sep" aria-hidden="true">&#10022;</span>
+      <span>Escape the Rat Race</span>
+      <span class="deal-bar__sep" aria-hidden="true">&#10022;</span>
+      <span>Be a Wildcat</span>
+      <span class="deal-bar__sep" aria-hidden="true">&#10022;</span>
+      <span>Fulfill Your Potential</span>
+      <span class="deal-bar__sep" aria-hidden="true">&#10022;</span>
+    </p>
+  </div>
 </div>
 
 <header class="site-header" id="siteHeader">
   <div class="wrap">
-    <a href="#top" class="logo" aria-label="Northveil"><img src="assets/images/northveil-logo-white.png" alt="Northveil" width="1337" height="394"></a>
+    <a href="/#top" class="logo" aria-label="Northveil home"><img src="/assets/images/northveil-logo-white.png" alt="Northveil" width="1337" height="394"></a>
 
     <nav aria-label="Primary">
       <ul class="nav-links" id="navLinks">
-        <li><a href="#lineup">Shop by Product</a></li>
-        <li><a href="#faq">FAQs</a></li>
-        <li><a href="#about">About Us</a></li>
+        <li class="has-dropdown">
+          <a href="/#lineup">Shop by Product <svg class="nav-caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2.5 4.5 3.5 3.5 3.5-3.5"/></svg></a>
+          <div class="nav-dropdown">
+            <ul>
+              <li><a href="/checkout?product=dmp">DMP</a></li>
+              <li><a href="/checkout?product=armband">Armband</a></li>
+              <li><a href="/checkout?product=headphones">Headphones</a></li>
+              <li><a href="/checkout?product=cases">Cases</a></li>
+              <li><a href="/checkout?product=clothes">Clothes</a></li>
+              <li><a href="/checkout?product=bundles">Bundle Deals</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="/questions">FAQs</a></li>
+        <li><a href="/about-us">About Us</a></li>
       </ul>
     </nav>
 
@@ -68,8 +91,8 @@
             <p class="account-menu__title">Orders &amp; support</p>
             <p class="account-menu__note">This site has no accounts &mdash; orders are placed and tracked on Amazon.</p>
             <a href="https://www.amazon.com/gp/css/order-history" target="_blank" rel="noopener">Your Amazon orders</a>
-            <a href="#warranty-policy" data-policy-link="warranty">Warranty claims</a>
-            <a href="#notify">Get notified at launch</a>
+            <a href="/#warranty-policy" data-policy-link="warranty">Warranty claims</a>
+            <a href="/#notify">Get notified at launch</a>
           </div>
         </div>
       </div>
@@ -85,138 +108,75 @@
 
 <main id="top">
 
-  <!-- HERO — giant full-bleed banner with the copy overlaid. Shows a "Banner image coming soon"
-       placeholder (.hero-placeholder) until real imagery exists.
+  <!-- HERO — a short, full-bleed banner so "The Northveil lineup" is visible as soon as the page opens.
+       Shows a "Banner image coming soon" placeholder (.hero-placeholder) until real imagery exists.
        To use a photo, add class "hero--photo" and set
        style="--hero-image:url(assets/images/hero.jpg)" on this element (see README). -->
-  <section class="hero">
+  <section class="hero" aria-label="Wildcat banner">
+    <h1 class="sr-only">Wildcat by Northveil Technologies &mdash; escape the rat race</h1>
     <div class="hero-media">
       <div class="hero-placeholder" role="img" aria-label="Banner image coming soon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="8.5" cy="10" r="1.6"/><path d="m21 16-5-5-8 8"/></svg>
         <span>Banner image coming soon</span>
       </div>
     </div>
-
-    <div class="wrap">
-      <div class="hero-copy reveal">
-        <p class="eyebrow">Introducing the Wildcat</p>
-        <h1>Escape the<br><em>rat race.</em><br>With the Wildcat.</h1>
-        <p class="hero-tagline">No ads. No algorithm. Pure music.</p>
-        <div class="hero-actions">
-          <a href="#" class="btn btn-primary is-disabled" id="amazonBtnHero" aria-disabled="true">
-            Shop on Amazon
-            <small>Launching soon</small>
-          </a>
-          <a href="#notify" class="btn btn-ghost">Notify Me at Launch</a>
-        </div>
-        <div class="hero-stats">
-          <div>
-            <strong>8+1</strong>
-            <span>Buttons &amp; scroll wheel</span>
-          </div>
-          <div>
-            <strong>5.3</strong>
-            <span>Bluetooth + 3.5mm aux</span>
-          </div>
-          <div>
-            <strong>0</strong>
-            <span>Bloatware, ever</span>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
 
-  <!-- SHOP BY PRODUCT — lineup starts right below the hero banner -->
+  <!-- SHOP BY PRODUCT — compact tiles, five across on a laptop. Each tile opens that product's checkout page. -->
   <section id="lineup" class="lineup pearl">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow">Shop by product</p>
         <h2>The Northveil lineup.</h2>
-        <p>The Wildcat leads the way. The gear built around it follows &mdash; here&rsquo;s what&rsquo;s on the way.</p>
       </div>
 
       <div class="lineup-grid reveal">
-        <article class="product-card product-card--featured" data-terms="dmp digital music player mp3 wildcat bluetooth">
+        <a href="/checkout?product=dmp" class="product-card product-card--featured" data-product="dmp">
           <div class="product-card__media">
             <span class="pill">Launching this holiday</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><rect x="8.5" y="4.5" width="7" height="8" rx="1"/><circle cx="12" cy="17" r="2.6"/></svg>
           </div>
-          <div class="product-card__body">
-            <h3>Wildcat DMP</h3>
-            <p>Our distraction-free digital music player. 8 buttons, a scroll wheel, Bluetooth 5.3, zero bloatware.</p>
-            <a href="#notify" class="product-card__link">Get notified at launch &rarr;</a>
-          </div>
-        </article>
+          <div class="product-card__body"><h3>DMP</h3></div>
+        </a>
 
-        <article class="product-card" data-terms="arm band holster running biking run bike gym">
+        <a href="/checkout?product=armband" class="product-card" data-product="armband">
           <div class="product-card__media">
             <span class="pill">In development</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8c0-1.7 3.6-3 8-3s8 1.3 8 3v8c0 1.7-3.6 3-8 3s-8-1.3-8-3Z"/><rect x="9" y="9" width="6" height="7" rx="1.5"/></svg>
           </div>
-          <div class="product-card__body">
-            <h3>Armband</h3>
-            <p>A running and biking armband and holster, made to carry the Wildcat wherever you move.</p>
-          </div>
-        </article>
+          <div class="product-card__body"><h3>Armband</h3></div>
+        </a>
 
-        <article class="product-card" data-terms="earbuds headset audio listening">
+        <a href="/checkout?product=headphones" class="product-card" data-product="headphones">
           <div class="product-card__media">
             <span class="pill">Coming soon</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="7" rx="1.5"/><rect x="17" y="14" width="4" height="7" rx="1.5"/></svg>
           </div>
-          <div class="product-card__body">
-            <h3>Headphones</h3>
-            <p>Listening gear to pair with your Wildcat.</p>
-          </div>
-        </article>
+          <div class="product-card__body"><h3>Headphones</h3></div>
+        </a>
 
-        <article class="product-card" data-terms="case screen protector charger protection accessories">
+        <a href="/checkout?product=cases" class="product-card" data-product="cases">
           <div class="product-card__media">
             <span class="pill">In development</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="4"/><rect x="8" y="7" width="8" height="7" rx="1.5"/></svg>
           </div>
-          <div class="product-card__body">
-            <h3>Cases</h3>
-            <p>Cases, screen protectors, and chargers to keep your Wildcat protected and powered.</p>
-          </div>
-        </article>
+          <div class="product-card__body"><h3>Cases</h3></div>
+        </a>
 
-        <article class="product-card" data-terms="apparel shirt tee hoodie hat merch">
+        <a href="/checkout?product=clothes" class="product-card" data-product="clothes">
           <div class="product-card__media">
             <span class="pill">Coming soon</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 3 6l2 4 3-1.5V21h8V8.5L19 10l2-4-5-3a4 4 0 0 1-8 0Z"/></svg>
           </div>
-          <div class="product-card__body">
-            <h3>Clothes</h3>
-            <p>Northveil apparel, for the people who carry the gear.</p>
-          </div>
-        </article>
+          <div class="product-card__body"><h3>Clothes</h3></div>
+        </a>
 
-        <article class="product-card" data-terms="bundle bundles package deals set kit save">
+        <a href="/checkout?product=bundles" class="product-card" data-product="bundles">
           <div class="product-card__media">
             <span class="pill">Coming soon</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg>
           </div>
-          <div class="product-card__body">
-            <h3>Package Deals</h3>
-            <p>Bundles that pair the Wildcat with the gear it works best with.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- TRUST BAR -->
-  <section class="trust-bar pearl" style="padding-top:28px; padding-bottom:28px;">
-    <div class="wrap">
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/></svg>
-        MP3 &#8226; M4A &#8226; WAV &#8226; FLAC
-      </div>
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        American-designed, built to last
+          <div class="product-card__body"><h3>Bundle Deals</h3></div>
+        </a>
       </div>
     </div>
   </section>
@@ -226,93 +186,12 @@
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">See it in motion</p>
-        <h2>Wildcat, up close.</h2>
+        <h2>Escape the rat race. Be a wildcat.</h2>
         <p>Product walkthroughs and behind-the-scenes drops from Northveil. Check back &mdash; this lineup is just getting started.</p>
       </div>
 
       <div class="video-grid reveal" id="videoGrid">
         <!-- populated by js/videos.js -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="about pearl">
-    <div class="wrap">
-      <div class="about-inner reveal">
-        <p class="eyebrow" style="justify-content:center;">About us</p>
-        <h2>Built in America. Built to be trusted.</h2>
-
-        <div class="about-block">
-          <h3>Who is Northveil?</h3>
-          <!-- DRAFT: Chase's slide stopped at "Northveil Technologies is an Audio . . . ." — confirm the wording. -->
-          <p>Northveil Technologies is an audio technology company building products for people who are tired of subscriptions, algorithms, and devices designed to keep them scrolling. The Wildcat is our first product, built to do exactly what it&rsquo;s supposed to and nothing more.</p>
-        </div>
-
-        <div class="about-block">
-          <h3>What does Northveil represent?</h3>
-          <blockquote class="about-quote">&ldquo;Northveil&rsquo;s purpose is to be a veil, laid upon your head, so you may focus not on the distractions next to you or the mistakes behind you, but on the goals, challenges, and day that await in front of you.&rdquo;</blockquote>
-        </div>
-
-        <p style="display:flex; align-items:center; justify-content:center; gap:12px; color:var(--cream); font-weight:600;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" style="flex-shrink:0;"><path d="M12 21C7 17 3 13.5 3 9.5 3 6.5 5.5 4 8.5 4c1.7 0 3.2.8 4.2 2.1C13.7 4.8 15.2 4 16.9 4 19.9 4 22 6.5 22 9.5 22 13.5 18 17 13 21Z"/></svg>
-          Meet Alt, our wildcat mascot &mdash; full reveal coming soon.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="pearl">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Questions</p>
-        <h2>Good to know.</h2>
-      </div>
-
-      <div class="faq-list reveal" id="faqList">
-        <div class="faq-item">
-          <button class="faq-q">Where can I buy the Wildcat?
-            <span class="plus"></span>
-          </button>
-          <div class="faq-a"><p>The Wildcat will be available through our Amazon store. It isn't live yet &mdash; join the notify list or follow us on social to be first in line when it drops.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">What audio formats does the Wildcat support?
-            <span class="plus"></span>
-          </button>
-          <div class="faq-a"><p>MP3, M4A, WAV, FLAC, and other common formats &mdash; just drag your existing library over.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">Does it have Bluetooth?
-            <span class="plus"></span>
-          </button>
-          <div class="faq-a"><p>Yes &mdash; Bluetooth 5.3+ for wireless headphones and speakers, plus a standard 3.5mm jack if you'd rather plug in.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">Why doesn't the Wildcat have an FM radio or microphone?
-            <span class="plus"></span>
-          </button>
-          <div class="faq-a"><p>We build in what people actually use, and leave out what just takes up space. The Wildcat is built to play your music &mdash; not to be a half-featured version of your phone.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">What colors is it available in?
-            <span class="plus"></span>
-          </button>
-          <div class="faq-a"><p>Steel ships as our core finish, alongside limited-edition Americana, Dark Camo, and White Camo colorways.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">Is there an armband or case?
-            <span class="plus"></span>
-          </button>
-          <div class="faq-a"><p>A running/biking arm band and holster are in development, alongside cases, screen protectors, and chargers. Follow along on social for drops.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">When does the Wildcat ship?
-            <span class="plus"></span>
-          </button>
-          <div class="faq-a"><p>We're targeting this holiday season. Follow @northveiltech or join the notify list and you'll be the first to know the exact date.</p></div>
-        </div>
       </div>
     </div>
   </section>
@@ -336,7 +215,7 @@
   <div class="wrap">
     <div class="footer-top">
       <div>
-        <a href="#top" class="logo" aria-label="Northveil"><img src="assets/images/northveil-logo-white.png" alt="Northveil" width="1337" height="394"></a>
+        <a href="/#top" class="logo" aria-label="Northveil home"><img src="/assets/images/northveil-logo-white.png" alt="Northveil" width="1337" height="394"></a>
         <div class="social-row">
           <a href="https://instagram.com/northveiltech" target="_blank" rel="noopener" aria-label="Instagram">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
@@ -355,16 +234,16 @@
       <div class="footer-col">
         <h5>Explore</h5>
         <ul>
-          <li><a href="#lineup">Shop by Product</a></li>
-          <li><a href="#videos">Videos</a></li>
+          <li><a href="/#lineup">Shop by Product</a></li>
+          <li><a href="/#videos">Videos</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h5>Company</h5>
         <ul>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#faq">FAQs</a></li>
-          <li><a href="#notify">Get Notified</a></li>
+          <li><a href="/about-us">About Us</a></li>
+          <li><a href="/questions">FAQs</a></li>
+          <li><a href="/#notify">Get Notified</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -380,14 +259,15 @@
     <div class="footer-bottom">
       <span>&copy; <span id="year"></span> Northveil Technologies. All rights reserved.</span>
       <nav class="footer-legal" aria-label="Policies">
-        <a href="#warranty-policy" data-policy-link="warranty">Warranty</a>
-        <a href="#privacy-policy" data-policy-link="privacy">Privacy</a>
-        <a href="#returns-policy" data-policy-link="returns">Returns &amp; Shipping</a>
+        <a href="/#warranty-policy" data-policy-link="warranty">Warranty</a>
+        <a href="/#privacy-policy" data-policy-link="privacy">Privacy</a>
+        <a href="/#returns-policy" data-policy-link="returns">Returns &amp; Shipping</a>
       </nav>
       <span>Wildcat&trade; is a product of Northveil Technologies.</span>
     </div>
   </div>
 </footer>
+
 
 <!-- POLICY OVERLAY — opened by [data-policy-link] or a #<key>-policy deep link -->
 <dialog class="policy-dialog" id="policyDialog" aria-labelledby="policyDialogTitle">
@@ -515,6 +395,7 @@
   </div>
 </dialog>
 
+<script src="js/products.js"></script>
 <script src="js/videos.js"></script>
 <script src="js/main.js"></script>
 </body>
