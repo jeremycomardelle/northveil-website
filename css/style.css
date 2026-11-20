@@ -476,11 +476,57 @@ section { position: relative; padding: 120px 0; }
 /* ---------- shop by product ---------- */
 /* Compact, clickable tiles — five across on a laptop. Each links to that product on Amazon. */
 .lineup { padding: 44px 0 72px; }
-.lineup .section-head { margin-bottom: 26px; }
-.lineup-grid {
+/* The title spans the full width of the screen, with the same side gutter as the header.
+   js/main.js (fitLineupTitle) sizes the font so the text fills that width exactly; the vw size is the no-JS fallback. */
+.lineup-title { padding: 0 clamp(20px, 2.5vw, 40px); margin-bottom: 26px; }
+.lineup-title h2 {
+  margin: 0;
+  font-size: 7.2vw;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--white);
+}
+/* One row of tiles. Five fit across on a laptop; any beyond that scroll sideways, driven by the arrow
+   buttons (js/main.js, initLineupCarousel) or by swiping. The padding/negative margin keeps card shadows
+   and the hover lift from being clipped by the scroll container. */
+.lineup-carousel { --per-view: 5; --gap: 16px; }
+.lineup-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.lineup-nav[hidden] { display: none; }
+.lineup-arrow {
+  width: 44px;
+  height: 44px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #e9ebee;
+  color: var(--white);
+  cursor: pointer;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+.lineup-arrow svg { width: 22px; height: 22px; }
+.lineup-arrow:hover:not(:disabled) { background: #d9dce1; }
+.lineup-arrow:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.lineup-arrow:disabled { opacity: 0.4; cursor: default; }
+.lineup-grid {
+  display: flex;
+  gap: var(--gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 6px;
+  scrollbar-width: none;
+  padding: 8px 6px 28px;
+  margin: -8px -6px -28px;
+}
+.lineup-grid::-webkit-scrollbar { display: none; }
+.lineup-grid .product-card {
+  flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
+  scroll-snap-align: start;
 }
 .product-card {
   display: flex;
@@ -513,6 +559,41 @@ section { position: relative; padding: 120px 0; }
   font-size: 1rem;
   font-weight: 700;
   color: var(--white);
+}
+
+/* ---------- reviews ---------- */
+.reviews { padding: 24px 0 90px; }
+.reviews .section-head { margin-bottom: 28px; }
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.review-card {
+  margin: 0;
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  background: var(--near-black);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.review-stars { color: #f29100; font-size: 1.05rem; letter-spacing: 0.12em; }
+.review-text { margin: 0; font-style: italic; color: var(--cream); line-height: 1.55; }
+.review-name { margin-top: auto; font-weight: 700; color: var(--white); }
+.review-card--sample { border-style: dashed; }
+.review-tag {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--steel);
 }
 
 /* ---------- pill labels ---------- */
@@ -785,11 +866,12 @@ body.is-policy-open { overflow: hidden; }
 @media (max-width: 980px) {
   .search { width: 180px; }
   .video-grid { grid-template-columns: 1fr; }
+  .review-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-top { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 900px) {
-  .lineup-grid { grid-template-columns: repeat(3, 1fr); }
+  .lineup-carousel { --per-view: 3; }
 }
 
 @media (max-width: 720px) {
@@ -825,7 +907,8 @@ body.is-policy-open { overflow: hidden; }
 }
 
 @media (max-width: 560px) {
-  .lineup-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .lineup-carousel { --per-view: 2; --gap: 12px; }
+  .review-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {

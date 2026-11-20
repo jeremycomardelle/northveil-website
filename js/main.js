@@ -62,7 +62,62 @@ function initDealBar() {
   else start();
 }
 
+/** Sizes the lineup title so its text spans the full width available to it, and keeps it fitted on resize. */
+function fitLineupTitle() {
+  const title = document.getElementById("lineupTitle");
+  if (!title) return;
+  const fit = () => {
+    const available = title.parentElement.clientWidth
+      - parseFloat(getComputedStyle(title.parentElement).paddingLeft)
+      - parseFloat(getComputedStyle(title.parentElement).paddingRight);
+    title.style.display = "inline-block";
+    title.style.fontSize = "100px";
+    const natural = title.getBoundingClientRect().width;
+    title.style.fontSize = `${(100 * available) / natural}px`;
+  };
+  const start = () => {
+    fit();
+    let lastWidth = window.innerWidth;
+    window.addEventListener("resize", () => window.innerWidth !== lastWidth && ((lastWidth = window.innerWidth), fit()));
+  };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(start);
+  else start();
+}
+
+/**
+ * Lineup carousel: the tiles sit in one row. When they don't all fit, the arrow buttons appear and scroll
+ * the row a screenful at a time (the row also scrolls by swipe / trackpad). An arrow is disabled at its end.
+ */
+function initLineupCarousel() {
+  const track = document.getElementById("lineupTrack");
+  const nav = document.querySelector("#lineupCarousel .lineup-nav");
+  if (!track || !nav) return;
+  const [prev, next] = nav.querySelectorAll(".lineup-arrow");
+
+  const update = () => {
+    const overflow = track.scrollWidth - track.clientWidth > 2;
+    nav.hidden = !overflow;
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+  };
+
+  nav.addEventListener("click", (e) => {
+    const btn = e.target.closest(".lineup-arrow");
+    if (!btn) return;
+    const card = track.querySelector(".product-card");
+    const step = card.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 0);
+    const cards = Math.max(1, Math.round(track.clientWidth / step));
+    track.scrollBy({ left: Number(btn.dataset.dir) * step * cards, behavior: "smooth" });
+  });
+  track.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  fitLineupTitle();
+  initLineupCarousel();
+
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
