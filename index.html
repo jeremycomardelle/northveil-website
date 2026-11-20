@@ -54,12 +54,12 @@
           <a href="/#lineup">Shop by Product <svg class="nav-caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2.5 4.5 3.5 3.5 3.5-3.5"/></svg></a>
           <div class="nav-dropdown">
             <ul>
-              <li><a href="/checkout?product=dmp">DMP</a></li>
-              <li><a href="/checkout?product=armband">Armband</a></li>
-              <li><a href="/checkout?product=headphones">Headphones</a></li>
-              <li><a href="/checkout?product=cases">Cases</a></li>
-              <li><a href="/checkout?product=clothes">Clothes</a></li>
-              <li><a href="/checkout?product=bundles">Bundle Deals</a></li>
+              <li><a href="/#lineup" data-amazon-product="dmp">DMP</a></li>
+              <li><a href="/#lineup" data-amazon-product="armband">Armband</a></li>
+              <li><a href="/#lineup" data-amazon-product="headphones">Headphones</a></li>
+              <li><a href="/#lineup" data-amazon-product="cases">Cases</a></li>
+              <li><a href="/#lineup" data-amazon-product="clothes">Clothes</a></li>
+              <li><a href="/#lineup" data-amazon-product="bundles">Bundle Deals</a></li>
             </ul>
           </div>
         </li>
@@ -98,7 +98,7 @@
       </div>
 
       <div class="header-cta">
-        <a href="#" class="btn btn-primary is-disabled" id="amazonBtnHeader" aria-disabled="true">Coming Soon</a>
+        <a href="#" class="btn btn-primary is-disabled" id="amazonBtnHeader" data-amazon-store data-live-text="Shop on Amazon" aria-disabled="true">Coming Soon</a>
       </div>
 
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
@@ -122,7 +122,7 @@
     </div>
   </section>
 
-  <!-- SHOP BY PRODUCT — compact tiles, five across on a laptop. Each tile opens that product's checkout page. -->
+  <!-- SHOP BY PRODUCT — compact tiles, five across on a laptop. Each tile links to that product on Amazon once the store is live. -->
   <section id="lineup" class="lineup pearl">
     <div class="wrap">
       <div class="section-head reveal">
@@ -130,7 +130,7 @@
       </div>
 
       <div class="lineup-grid reveal">
-        <a href="/checkout?product=dmp" class="product-card product-card--featured" data-product="dmp">
+        <a href="/#lineup" data-amazon-product="dmp" class="product-card product-card--featured" data-product="dmp">
           <div class="product-card__media">
             <span class="pill">Launching this holiday</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><rect x="8.5" y="4.5" width="7" height="8" rx="1"/><circle cx="12" cy="17" r="2.6"/></svg>
@@ -138,7 +138,7 @@
           <div class="product-card__body"><h3>DMP</h3></div>
         </a>
 
-        <a href="/checkout?product=armband" class="product-card" data-product="armband">
+        <a href="/#lineup" data-amazon-product="armband" class="product-card" data-product="armband">
           <div class="product-card__media">
             <span class="pill">In development</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8c0-1.7 3.6-3 8-3s8 1.3 8 3v8c0 1.7-3.6 3-8 3s-8-1.3-8-3Z"/><rect x="9" y="9" width="6" height="7" rx="1.5"/></svg>
@@ -146,7 +146,7 @@
           <div class="product-card__body"><h3>Armband</h3></div>
         </a>
 
-        <a href="/checkout?product=headphones" class="product-card" data-product="headphones">
+        <a href="/#lineup" data-amazon-product="headphones" class="product-card" data-product="headphones">
           <div class="product-card__media">
             <span class="pill">Coming soon</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="7" rx="1.5"/><rect x="17" y="14" width="4" height="7" rx="1.5"/></svg>
@@ -154,7 +154,7 @@
           <div class="product-card__body"><h3>Headphones</h3></div>
         </a>
 
-        <a href="/checkout?product=cases" class="product-card" data-product="cases">
+        <a href="/#lineup" data-amazon-product="cases" class="product-card" data-product="cases">
           <div class="product-card__media">
             <span class="pill">In development</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="4"/><rect x="8" y="7" width="8" height="7" rx="1.5"/></svg>
@@ -162,7 +162,7 @@
           <div class="product-card__body"><h3>Cases</h3></div>
         </a>
 
-        <a href="/checkout?product=clothes" class="product-card" data-product="clothes">
+        <a href="/#lineup" data-amazon-product="clothes" class="product-card" data-product="clothes">
           <div class="product-card__media">
             <span class="pill">Coming soon</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 3 6l2 4 3-1.5V21h8V8.5L19 10l2-4-5-3a4 4 0 0 1-8 0Z"/></svg>
@@ -170,7 +170,7 @@
           <div class="product-card__body"><h3>Clothes</h3></div>
         </a>
 
-        <a href="/checkout?product=bundles" class="product-card" data-product="bundles">
+        <a href="/#lineup" data-amazon-product="bundles" class="product-card" data-product="bundles">
           <div class="product-card__media">
             <span class="pill">Coming soon</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg>
@@ -204,7 +204,7 @@
       <p>Launching this holiday season. Follow Northveil on Instagram for the launch date, drop details, and a first look at new products before anyone else sees it.</p>
       <div class="hero-actions" style="justify-content:center;">
         <a href="https://instagram.com/northveiltech" target="_blank" rel="noopener" class="btn btn-primary">Follow @northveiltech</a>
-        <a href="#" class="btn btn-ghost is-disabled" aria-disabled="true">Amazon store &mdash; coming soon</a>
+        <a href="#" class="btn btn-ghost is-disabled" data-amazon-store data-live-text="Shop on Amazon" aria-disabled="true">Amazon store &mdash; coming soon</a>
       </div>
     </div>
   </section>
@@ -252,7 +252,7 @@
           <li><a href="mailto:Northveiltechnologies@gmail.com">Northveiltechnologies@gmail.com</a></li>
           <!-- Company phone number: uncomment and fill in once there's one to publish.
           <li><a href="tel:+10000000000">(000) 000-0000</a></li> -->
-          <li><a href="#" class="is-disabled" aria-disabled="true">Amazon Store (soon)</a></li>
+          <li><a href="#" class="is-disabled" data-amazon-store data-live-text="Amazon Store" aria-disabled="true">Amazon Store (soon)</a></li>
         </ul>
       </div>
     </div>

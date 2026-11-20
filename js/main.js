@@ -1,10 +1,6 @@
 /**
- * Northveil site config + behavior.
- *
- * Flip AMAZON_STORE_URL once the Amazon store is live to automatically
- * enable every "Shop on Amazon" button across the page.
+ * Northveil site behavior. The Amazon store link is set in js/products.js (AMAZON_STORE_URL).
  */
-const AMAZON_STORE_URL = ""; // e.g. "https://www.amazon.com/shops/northveiltech"
 
 /**
  * Deals banner: repeats the items in .deal-bar__set until they fill the bar twice over, then scrolls
@@ -72,17 +68,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initDealBar();
 
-  // Wire up Amazon CTAs once a URL is set.
+  // Point every shop link at Amazon. Until AMAZON_STORE_URL (js/products.js) is set, the store buttons stay
+  // disabled "coming soon" placeholders and product links fall back to the lineup on the home page.
+  const wireAmazon = (el, url, liveText) => {
+    el.href = url;
+    el.target = "_blank";
+    el.rel = "noopener";
+    el.removeAttribute("aria-disabled");
+    el.classList.remove("is-disabled");
+    if (liveText) el.textContent = liveText;
+  };
   if (AMAZON_STORE_URL) {
-    document.querySelectorAll("#amazonBtnHero, #amazonBtnHeader").forEach((btn) => {
-      btn.href = AMAZON_STORE_URL;
-      btn.target = "_blank";
-      btn.rel = "noopener";
-      btn.removeAttribute("aria-disabled");
-      btn.classList.remove("is-disabled");
-      btn.querySelector("small") && (btn.querySelector("small").textContent = "");
-    });
+    document.querySelectorAll("[data-amazon-store]").forEach((el) => wireAmazon(el, AMAZON_STORE_URL, el.dataset.liveText));
   }
+  document.querySelectorAll("[data-amazon-product]").forEach((el) => {
+    const product = NORTHVEIL_PRODUCTS.find((p) => p.id === el.dataset.amazonProduct);
+    const url = (product && product.amazonUrl) || AMAZON_STORE_URL;
+    if (url) wireAmazon(el, url);
+  });
 
   // Sticky header shadow/blur on scroll.
   const header = document.getElementById("siteHeader");
@@ -161,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
       label: p.name,
       group: "Product",
       el: document.querySelector(`.product-card[data-product="${p.id}"]`),
-      href: northveilCheckoutUrl(p.id),
+      href: "/#lineup",
       terms: `${p.tile} ${p.terms} ${p.description}`,
     })),
     ...sectionEntries,

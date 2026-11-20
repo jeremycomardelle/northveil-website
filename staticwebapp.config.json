@@ -1,8 +1,7 @@
 {
   "routes": [
     { "route": "/about-us", "rewrite": "/about-us/index.html" },
-    { "route": "/questions", "rewrite": "/questions/index.html" },
-    { "route": "/checkout", "rewrite": "/checkout/index.html" }
+    { "route": "/questions", "rewrite": "/questions/index.html" }
   ],
   "navigationFallback": {
     "rewrite": "/index.html",

@@ -474,7 +474,7 @@ section { position: relative; padding: 120px 0; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 /* ---------- shop by product ---------- */
-/* Compact, clickable tiles — five across on a laptop. Each is a link to that product's checkout page. */
+/* Compact, clickable tiles — five across on a laptop. Each links to that product on Amazon. */
 .lineup { padding: 44px 0 72px; }
 .lineup .section-head { margin-bottom: 26px; }
 .lineup-grid {
@@ -749,68 +749,6 @@ section { position: relative; padding: 120px 0; }
 .policy-dialog__foot .btn { padding: 10px 26px; font-size: 0.95rem; }
 body.is-policy-open { overflow: hidden; }
 
-/* ---------- checkout ---------- */
-.checkout { padding: 70px 0 110px; }
-.checkout-title {
-  margin: 14px 0 34px;
-  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-  color: var(--white);
-}
-.checkout-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
-  gap: 32px;
-  align-items: start;
-}
-.checkout-card {
-  background: var(--near-black);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 24px;
-}
-.checkout-form .checkout-card + .checkout-card { margin-top: 20px; }
-.checkout-card h2 { font-size: 1.5rem; color: var(--white); margin-bottom: 18px; }
-.field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.field--full { grid-column: 1 / -1; }
-.field label {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--steel);
-}
-.field input, .field select {
-  width: 100%;
-  height: 46px;
-  padding: 0 14px;
-  border-radius: 10px;
-  border: 1px solid var(--line);
-  background: #ffffff;
-  color: var(--white);
-  font: inherit;
-  font-size: 1rem;
-}
-.field input:focus, .field select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
-.checkout-summary .field { margin-bottom: 16px; }
-.checkout-note { margin: 0; color: var(--steel); font-size: 0.95rem; }
-.checkout-note a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
-.checkout-submit { margin-top: 22px; width: 100%; }
-.summary-product { margin: 0 0 18px; }
-.summary-product p { margin: 10px 0 0; color: var(--steel); font-size: 0.92rem; }
-.pill--inline { position: static; display: inline-block; }
-.summary-line {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 13px 0;
-  border-top: 1px solid var(--line);
-  font-size: 0.95rem;
-  color: var(--cream);
-}
-.summary-line--total { font-weight: 700; font-size: 1.05rem; color: var(--white); }
-
 /* ---------- pearl theme ----------
    Everything below the hero banner, down to (but not including) the black footer, carries the .pearl class.
    Instead of rewriting each component, .pearl re-maps the dark-theme color tokens
@@ -848,7 +786,6 @@ body.is-policy-open { overflow: hidden; }
   .search { width: 180px; }
   .video-grid { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr 1fr; }
-  .checkout-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 900px) {
@@ -889,7 +826,6 @@ body.is-policy-open { overflow: hidden; }
 
 @media (max-width: 560px) {
   .lineup-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .field-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
